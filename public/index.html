@@ -36,16 +36,106 @@
 			<div class="tools">
 				<h3>模块管理</h3>
 				<p>清除现有模块</p>
-				<ul>
-					<li>痴呆</li>
+				<ul class="show">
+					<li>
+						<i class="logo el-icon-user"></i>
+						<span>基本信息</span>
+						<div class="btn">
+							<!-- <el-checkbox v-model="checked">照片</el-checkbox> -->
+							<input type="checkbox" name="" id="img" />
+							<label for="img">照片</label>
+						</div>
+					</li>
+
+					<li v-for="item in showModule">
+						<i class="logo" :class="item.logo"></i>
+						<span>{{item.name}}</span>
+						<div class="show btn">
+							<i class="el-icon-remove-outline"></i>
+						</div>
+					</li>
 				</ul>
 				<p>添加模块</p>
+				<ul class="hide">
+					<li v-for="item in hideModule">
+						<i class="logo" :class="item.logo"></i>
+						<span>{{item.name}}</span>
+						<p class="content">{{item.content}}</p>
+						<div class="show btn">
+							<i class="el-icon-circle-plus-outline"></i>
+						</div>
+					</li>
+				</ul>
+				<el-button class="download" type="primary">生成简历</el-button>
 			</div>
 		</div>
 
 		<script>
 			var vm = new Vue({
 				el: '#app',
+				data() {
+					return {
+						showModule: [
+							{
+								name: '求职意向',
+								logo: 'el-icon-position',
+								content: '职位要求信息',
+								children: [],
+							},
+							{
+								name: '项目经历',
+								logo: 'el-icon-notebook-2',
+								content: '展示专业领域的项目与能力',
+								children: [],
+							},
+							{
+								name: '自我评价',
+								logo: 'el-icon-mic',
+								content: '突出个人求职优势',
+								children: [],
+							},
+							{
+								name: '工作经历',
+								logo: 'el-icon-suitcase',
+								content: '展示工作经历，突出相关能力',
+								children: [],
+							},
+							{
+								name: '在校经历',
+								logo: 'el-icon-office-building',
+								content: '描述学历背景及专业信息',
+								children: [],
+							},
+						],
+						hideModule: [
+							{
+								name: '教育经历',
+								logo: 'el-icon-date',
+								content: '展示人际交往与团队合作能力',
+								children: [],
+							},
+							{
+								name: '实习经历',
+								logo: 'el-icon-data-analysis',
+								content: '突出相关经验，展示自身能力',
+								children: [],
+							},
+							{
+								name: '相关技能',
+								logo: 'el-icon-setting',
+								content: '列举自己强项与掌握的技能',
+								children: [],
+							},
+							{
+								name: '荣誉证书',
+								logo: 'el-icon-trophy',
+								content: '列出自己掌握的技能与强项',
+								children: [],
+							},
+						],
+					};
+				},
+				methods: {},
 			});
 		</script>
 	</body>

@@ -66,4 +66,68 @@ li {
 .tools h3,
 p {
 	margin: 10px;
+	color: rgb(36, 47, 68);
+}
+.tools p {
+	font-size: 14px;
+	color: rgb(118, 120, 123);
+}
+.tools ul {
+	margin: 20px;
+	color: #545d6d;
+}
+.tools ul li {
+	background-color: rgb(245, 247, 249);
+	padding: 10px;
+	font-size: 12px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.tools ul li i {
+	color: rgb(139, 151, 175);
+}
+.tools .logo {
+	margin-right: 10px;
+}
+.tools ul li .btn {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	font-size: 15px;
+	cursor: pointer;
+}
+.tools .show li:hover .btn i::before {
+	content: '\e7a2';
+	color: rgb(255, 88, 88);
+}
+.tools ul li .btn input {
+	cursor: pointer;
+	border: 1px;
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+}
+.tools ul li .btn input[type='checkbox'] {
+	color: red;
+}
+.tools ul li .btn label {
+	font-size: 12px;
+	user-select: none;
+	cursor: pointer;
+}
+.tools ul li .content {
+	margin: 0;
+	color: rgb(142, 150, 164);
+	padding: 5px 0;
+}
+.tools .hide li:hover .btn i::before {
+	content: '\e7a0';
+	color: rgb(63, 200, 87);
+}
+.download {
+	position: absolute;
+	bottom: 40px;
+	right: 50%;
+	transform: translateX(50%);
 }
