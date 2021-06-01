@@ -50,14 +50,14 @@
 					<li v-for="item in showModule">
 						<i class="logo" :class="item.logo"></i>
 						<span>{{item.name}}</span>
-						<div class="show btn">
+						<div class="show btn" @click="insertItem(item)">
 							<i class="el-icon-remove-outline"></i>
 						</div>
 					</li>
 				</ul>
-				<p>添加模块</p>
+				<p v-show="hideModule.length > 0">添加模块</p>
 				<ul class="hide">
-					<li v-for="item in hideModule">
+					<li v-for="item in hideModule" @click="deleteItem(item)">
 						<i class="logo" :class="item.logo"></i>
 						<span>{{item.name}}</span>
 						<p class="content">{{item.content}}</p>
@@ -135,7 +135,16 @@
 						],
 					};
 				},
-				methods: {},
+				methods: {
+					deleteItem(item) {
+						this.showModule.push(item);
+						this.hideModule.splice(this.hideModule.indexOf(item), 1);
+					},
+					insertItem(item) {
+						this.hideModule.unshift(item);
+						this.showModule.splice(this.hideModule.indexOf(item), 1);
+					},
+				},
 			});
 		</script>
 	</body>
