@@ -23,6 +23,9 @@
 		/>
 		<!-- 引入element-ui组件库 -->
 		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<!-- html2canvas -->
+		<script src="./js/html2canvas.min.js"></script>
+
 		<title>简历制作</title>
 	</head>
 	<body>
@@ -66,7 +69,9 @@
 						</div>
 					</li>
 				</ul>
-				<el-button class="download" type="primary">生成简历</el-button>
+				<el-button @click="download" class="download" type="primary"
+					>生成简历</el-button
+				>
 			</div>
 		</div>
 
@@ -143,6 +148,25 @@
 					insertItem(item) {
 						this.hideModule.unshift(item);
 						this.showModule.splice(this.hideModule.indexOf(item), 1);
+					},
+					// 下载简历
+					download() {
+						var shareContent = document.querySelector('.tools'); //需要截图的包裹的（原生的）DOM 对象
+						let opts = {
+							// scale: 16, // 添加的scale 参数
+							// dpi: window.devicePixelRatio * 96,
+							useCORS: true, // 【重要】开启跨域配置
+						};
+
+						html2canvas(shareContent, { scal: 3 }).then((canvas) => {
+							// document.body.appendChild(canvas);
+							var context = canvas.getContext('2d');
+							let a = document.createElement('a');
+							a.href = canvas.toDataURL('image/png', 1.0);
+							a.download = '个人简历';
+							a.click();
+							a.remove();
+						});
 					},
 				},
 			});
