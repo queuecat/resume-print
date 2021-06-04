@@ -51,7 +51,7 @@
 						<span>基本信息</span>
 						<div class="btn">
 							<!-- <el-checkbox v-model="checked">照片</el-checkbox> -->
-							<input type="checkbox" name="" id="img" />
+							<input v-model="imgShow" type="checkbox" name="" id="img" />
 							<label for="img">照片</label>
 						</div>
 					</li>
@@ -75,10 +75,51 @@
 						</div>
 					</li>
 				</ul>
-				<el-button @click="download" class="download" type="primary"
+				<el-button @click="showDownloadDialog" class="download" type="primary"
 					>生成简历</el-button
 				>
 			</div>
+			<!-- 下载模态框 -->
+			<el-dialog
+				width="30%"
+				title="生成简历"
+				:visible.sync="downloadDialogFormVisible"
+			>
+				<el-form :model="downloadForm" label-position="top">
+					<el-form-item label="文档名称">
+						<el-input
+							v-model="downloadForm.downName"
+							autocomplete="off"
+						></el-input>
+					</el-form-item>
+					<el-form-item label="文档类型">
+						<el-select v-model="downloadForm.type" placeholder="请选择活动区域">
+							<el-tooltip
+								class="item"
+								effect="dark"
+								content="适用于发送给HR，打印或投递简历"
+								placement="right"
+							>
+								<el-option label="PDF文档(*.pdf)" value="pdf"></el-option>
+							</el-tooltip>
+							<el-tooltip
+								class="item"
+								effect="dark"
+								content="生成长图简历，方便分享"
+								placement="right"
+							>
+								<el-option label="图片文档(*.png)" value="img"></el-option>
+							</el-tooltip>
+						</el-select>
+					</el-form-item>
+				</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button @click="downloadDialogFormVisible = false"
+						>取 消</el-button
+					>
+					<el-button type="primary" @click="download">生成为文档</el-button>
+				</div>
+			</el-dialog>
 		</div>
 		<!-- index.js -->
 		<script src="./js/index.js"></script>
