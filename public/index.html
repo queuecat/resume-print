@@ -84,9 +84,9 @@
 							</div>
 						</div>
 						<label v-show="imgShow" class="user-load" for="user">
-							<input id="user" type="file" />
-							<!-- <img src="./images/无上传.png" id="preview" /> -->
-							<el-avatar icon="el-icon-user-solid"></el-avatar>
+							<input id="user" type="file" @change="userload" />
+							<img src="./images/user.png" id="user-img" />
+							<el-avatar icon="el-icon-upload"></el-avatar>
 							<!-- <i class="glyphicon glyphicon-open"></i> -->
 						</label>
 					</div>
