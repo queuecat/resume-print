@@ -195,11 +195,11 @@ p {
 	padding: 10px;
 	border: 1px transparent dashed;
 	display: flex;
+	align-items: flex-end;
 }
 .personalBox {
 	/* 两栏自适应布局 */
 	flex: 1;
-	align-items: flex-end;
 }
 .personal-info .title {
 	margin-bottom: 10px;
@@ -219,6 +219,7 @@ p {
 .user-load {
 	width: 135px;
 	height: 180px;
+	margin-left: 15px;
 }
 .user-load .el-avatar {
 	width: 100%;
