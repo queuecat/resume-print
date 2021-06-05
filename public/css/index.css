@@ -163,6 +163,26 @@ p {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	position: relative;
+}
+.items .edit-btn {
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	color: rgb(44, 105, 249);
+	border: 1px solid rgb(44, 105, 249);
+	text-align: center;
+	line-height: 25px;
+	border-radius: 3px;
+	font-size: 15px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+.items:hover .edit-btn {
+	display: block;
 }
 .items .item {
 	min-width: 50%;
