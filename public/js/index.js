@@ -2,6 +2,73 @@ var vm = new Vue({
 	el: '#app',
 	data() {
 		return {
+			// 基本信息
+			personalInfo: {
+				default: [
+					{
+						name: '姓名',
+						content: '',
+					},
+					{
+						name: '性别',
+						content: '',
+					},
+					{
+						name: '年龄',
+						content: '',
+					},
+					{
+						name: '头像',
+						content: '',
+					},
+					{
+						name: '邮箱',
+						content: '',
+					},
+					{
+						name: '电话',
+						content: '',
+					},
+				],
+				optional: [
+					{
+						name: '民族',
+						content: '',
+					},
+					{
+						name: '户籍',
+						content: '',
+					},
+					{
+						name: '现所在地',
+						content: '',
+					},
+					{
+						name: '开始工作时间',
+						content: '',
+					},
+					{
+						name: '政治面貌',
+						content: '',
+					},
+					{
+						name: '身高',
+						content: '',
+					},
+					{
+						name: '体重',
+						content: '',
+					},
+				],
+			},
+			// 表单信息
+			personalArr: [],
+			// 默认信息
+			personalDefaultArr: [],
+			// 基本信息模态框
+			personalDialogFormVisible: false,
+			// 模态框中头像
+			personalImgShow: true,
 			// 右侧工具栏中模块显示
 			showModule: [
 				{
@@ -72,6 +139,7 @@ var vm = new Vue({
 		};
 	},
 	methods: {
+		// 侧边栏模块添加删除
 		deleteItem(item) {
 			this.showModule.push(item);
 			this.hideModule.splice(this.hideModule.indexOf(item), 1);
@@ -79,6 +147,50 @@ var vm = new Vue({
 		insertItem(item) {
 			this.hideModule.unshift(item);
 			this.showModule.splice(this.hideModule.indexOf(item), 1);
+		},
+		// 生成基本信息展示数据
+		personalInfoShow() {
+			this.personalArr = [];
+			this.personalDefaultArr = [];
+			for (item of this.personalInfo.default) {
+				if (item.content.trim().length > 0) {
+					this.personalArr.push(item);
+				}
+				if (item.name !== '头像') {
+					this.personalDefaultArr.push({
+						name: item.name,
+						content: item.name,
+					});
+				}
+			}
+			for (item of this.personalInfo.optional) {
+				if (item.content.trim().length > 0) {
+					this.personalArr.push(item);
+				}
+			}
+		},
+		// 基本信息字段删除
+		deletepersonalInfoItem(items, item) {
+			if (items.length <= 1) {
+				return false;
+			}
+			this.$confirm('此操作将删除该字段, 是否继续?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'error',
+			})
+				.then(() => {
+					items.splice(items.indexOf(item), 1);
+				})
+				.catch(() => {
+					console.log('删除取消');
+				});
+		},
+		// 修改基本信息字段
+		editpersonalInfo() {
+			this.personalInfoShow();
+			this.imgShow = this.personalImgShow;
+			this.personalDialogFormVisible = false;
 		},
 		// 头像上传
 		userload() {
@@ -195,6 +307,19 @@ var vm = new Vue({
 					);
 				}
 			});
+			this.downloadDialogFormVisible = false;
 		},
+	},
+	computed: {
+		// 基本信息展示数据来源确定
+		personalDataForWhere() {
+			return this.personalArr.length === 0
+				? this.personalDefaultArr
+				: this.personalArr;
+		},
+	},
+	created() {
+		// 生成基本信息数据
+		this.personalInfoShow();
 	},
 });

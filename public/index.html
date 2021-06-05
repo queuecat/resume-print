@@ -45,43 +45,25 @@
 								基本信息
 							</h3>
 							<div class="items">
-								<div class="item">
+								<div class="item" v-for="item in personalDataForWhere">
 									<span class="content">
-										<strong> 痴呆：</strong>
-										<span>痴呆 </span>
-										<span class="btn">
+										<strong>{{item.name}}：</strong>
+										<span>{{item.content}}</span>
+										<span
+											class="btn"
+											@click="deletepersonalInfoItem(personalDataForWhere,item)"
+										>
 											<i class="el-icon-remove"></i>
 										</span>
 									</span>
 								</div>
-								<div class="item">
-									<span class="content">
-										<strong> 痴呆：</strong>
-										<span>痴呆 </span>
-										<span class="btn">
-											<i class="el-icon-remove"></i>
-										</span>
-									</span>
+
+								<div class="edit-btn">
+									<i
+										class="el-icon-edit"
+										@click="personalDialogFormVisible = true"
+									></i>
 								</div>
-								<div class="item">
-									<span class="content">
-										<strong> 痴呆：</strong>
-										<span>痴呆 </span>
-										<span class="btn">
-											<i class="el-icon-remove"></i>
-										</span>
-									</span>
-								</div>
-								<div class="item">
-									<span class="content">
-										<strong> 痴呆：</strong>
-										<span>痴呆 </span>
-										<span class="btn">
-											<i class="el-icon-remove"></i>
-										</span>
-									</span>
-								</div>
-								<div class="edit-btn"><i class="el-icon-edit"></i></div>
 							</div>
 						</div>
 						<label v-show="imgShow" class="user-load" for="user">
@@ -169,6 +151,46 @@
 						>取 消</el-button
 					>
 					<el-button type="primary" @click="download">生成为文档</el-button>
+				</div>
+			</el-dialog>
+			<!-- 基本信息模态框 -->
+			<el-dialog
+				width="40%"
+				title="基本信息"
+				:visible.sync="personalDialogFormVisible"
+				class="personalDialog"
+			>
+				<el-form :model="personalInfo" label-position="left" inline>
+					<el-form-item
+						:label="item.name+'：'"
+						v-if="item.name!=='头像'"
+						v-for="item in personalInfo.default"
+					>
+						<el-input v-model="item.content" autocomplete="off"></el-input>
+					</el-form-item>
+					<el-form-item label="头像">
+						<el-select v-model="personalImgShow" placeholder="请选择活动区域">
+							<el-option label="显示" :value="true"></el-option>
+							<el-option label="隐藏" :value="false"></el-option>
+						</el-select>
+					</el-form-item>
+					<el-collapse>
+						<el-collapse-item title="一致性 Consistency" name="1">
+							<el-form-item
+								:label="item.name+'：'"
+								v-if="item.name!=='头像'"
+								v-for="item in personalInfo.optional"
+							>
+								<el-input v-model="item.content" autocomplete="off"></el-input>
+							</el-form-item>
+						</el-collapse-item>
+					</el-collapse>
+				</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button @click="personalDialogFormVisible = false"
+						>取 消</el-button
+					>
+					<el-button type="primary" @click="editpersonalInfo">保存</el-button>
 				</div>
 			</el-dialog>
 		</div>

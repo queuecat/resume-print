@@ -259,14 +259,22 @@ p {
 	font-size: 50px;
 	position: absolute;
 	top: 0;
-	transition: opacity 0.3s;
+	transition: all 0.3s;
+	visibility: hidden;
 	opacity: 0;
 	color: #333;
 }
-.user-load .el-avatar:hover {
-	display: inline-block;
+.user-load:hover .el-avatar {
+	visibility: visible;
 	opacity: 0.6;
 }
 #user {
 	display: none;
+}
+/* 基本信息模态框 */
+.personalDialog .el-form-item {
+	width: 50%;
+}
+.personalDialog .el-form--inline .el-form-item {
+	margin-right: 0;
 }
