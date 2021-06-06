@@ -272,9 +272,20 @@ p {
 	display: none;
 }
 /* 基本信息模态框 */
+.personalDialog .el-form {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
 .personalDialog .el-form-item {
-	width: 50%;
+	width: 45%;
 }
 .personalDialog .el-form--inline .el-form-item {
 	margin-right: 0;
+	display: flex;
+	float: left;
+	justify-content: flex-end;
+}
+.personalDialog .el-collapse {
+	width: 100%;
 }
