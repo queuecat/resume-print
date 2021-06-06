@@ -139,8 +139,9 @@ p {
 /* main */
 .main-list {
 	margin: 0 50px 30px 50px;
-	padding: 10px;
+	padding: 0 10px;
 	border: 1px transparent dashed;
+	position: relative;
 }
 .main-list:hover {
 	background-color: rgb(246, 250, 251);
@@ -156,6 +157,25 @@ p {
 	line-height: 35px;
 	font-weight: 400;
 	border: 1px rgb(19, 60, 131) solid;
+}
+.main-list .edit-btn {
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	color: rgb(44, 105, 249);
+	border: 1px solid rgb(44, 105, 249);
+	text-align: center;
+	line-height: 25px;
+	border-radius: 3px;
+	font-size: 15px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: none;
+	cursor: pointer;
+}
+.main-list:hover .edit-btn {
+	display: block;
 }
 .items {
 	padding: 10px;
@@ -209,7 +229,6 @@ p {
 	display: inline-block;
 }
 /* 个人信息 */
-
 .personal-info {
 	margin: 40px 50px 30px 50px;
 	padding: 10px;

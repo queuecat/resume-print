@@ -2,8 +2,9 @@ var vm = new Vue({
 	el: '#app',
 	data() {
 		return {
-			// 基本信息
+			//todo 基本信息
 			personalInfo: {
+				logo: 'el-icon-user-solid',
 				default: [
 					{
 						name: '姓名',
@@ -69,7 +70,45 @@ var vm = new Vue({
 			personalDialogFormVisible: false,
 			// 模态框中头像
 			personalImgShow: true,
-			// 右侧工具栏中模块显示
+			//todo 求职意向
+			workerNeed: {
+				logo: 'el-icon-s-custom',
+				default: [
+					{
+						name: '求职岗位',
+						content: '',
+					},
+					{
+						name: '意向城市',
+						content: '',
+					},
+					{
+						name: '期望薪水',
+						content: '',
+					},
+					{
+						name: '求职类型',
+						content: '',
+					},
+				],
+				optional: [
+					{
+						name: '期望行业',
+						content: '',
+					},
+					{
+						name: '当前状态',
+						content: '',
+					},
+				],
+			},
+			// 求职意向模态框
+			workerNeedDialogFormVisible: false,
+			// 表单信息
+			workerNeedArr: [],
+			// 默认信息
+			workerNeedDefaultArr: [],
+			//todo 右侧工具栏中模块显示
 			showModule: [
 				{
 					name: '求职意向',
@@ -139,14 +178,22 @@ var vm = new Vue({
 		};
 	},
 	methods: {
+		// 查询显示模块数组中是否含有指定模块
+		haveItem(name) {
+			for (const iterator of this.showModule) {
+				if (iterator.name === name) return true;
+			}
+			return false;
+		},
 		// 侧边栏模块添加删除
 		deleteItem(item) {
 			this.showModule.push(item);
+			console.log(this.hideModule.indexOf(item));
 			this.hideModule.splice(this.hideModule.indexOf(item), 1);
 		},
 		insertItem(item) {
 			this.hideModule.unshift(item);
-			this.showModule.splice(this.hideModule.indexOf(item), 1);
+			this.showModule.splice(this.showModule.indexOf(item), 1);
 		},
 		// 生成基本信息展示数据
 		personalInfoShow() {
@@ -191,6 +238,27 @@ var vm = new Vue({
 			this.personalInfoShow();
 			this.imgShow = this.personalImgShow;
 			this.personalDialogFormVisible = false;
+		},
+		// 生成求职意向展示数据
+		workerNeedShow() {
+			this.workerNeedArr = [];
+			this.workerNeedDefaultArr = [];
+			for (let item of this.workerNeed.default) {
+				if (item.content.trim().length > 0) {
+					this.workerNeedArr.push(item);
+				}
+
+				this.workerNeedDefaultArr.push({
+					name: item.name,
+					content: item.name,
+				});
+			}
+			for (let item of this.workerNeed.optional) {
+				if (item.content.trim().length > 0) {
+					this.workerNeedArr.push(item);
+				}
+			}
+			this.workerNeedDialogFormVisible = false;
 		},
 		// 头像上传
 		userload() {
@@ -317,9 +385,15 @@ var vm = new Vue({
 				? this.personalDefaultArr
 				: this.personalArr;
 		},
+		workerNeedDataForWhere() {
+			return this.workerNeedArr.length === 0
+				? this.workerNeedDefaultArr
+				: this.workerNeedArr;
+		},
 	},
 	created() {
 		// 生成基本信息数据
 		this.personalInfoShow();
+		this.workerNeedShow();
 	},
 });
