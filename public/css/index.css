@@ -136,7 +136,7 @@ p {
 	right: 50%;
 	transform: translateX(50%);
 }
-/* main */
+/* 模块设计 */
 .main-list {
 	margin: 0 50px 30px 50px;
 	padding: 0 10px;
@@ -227,6 +227,97 @@ p {
 }
 .items .item .content:hover .btn {
 	display: inline-block;
+}
+.items .dataAndTitle {
+	margin-bottom: 10px;
+	height: max-content;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.items.textBox:hover {
+	background-color: rgb(216, 229, 251);
+}
+.items .dataAndTitle .el-date-editor {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	width: 200px !important;
+	line-height: normal;
+	height: auto;
+	padding-left: 0;
+}
+.items .el-date-editor i {
+	display: none;
+}
+.items .el-date-editor input {
+	background-color: transparent;
+	font-size: 16px;
+	line-height: normal;
+	cursor: pointer;
+	height: auto;
+	font-weight: 600;
+	color: #000;
+}
+.items .el-date-editor input:first-of-type {
+	text-align: left;
+}
+.items .el-date-editor input:last-of-type {
+	text-align: right;
+}
+.items .el-date-editor input::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #000;
+}
+.items .el-date-editor input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #000;
+}
+.items .el-date-editor input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #000;
+}
+.items .el-date-editor input:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #000;
+}
+.items .el-date-editor .el-range-separator {
+	line-height: normal;
+	height: auto;
+	font-weight: 600;
+	padding: 0;
+}
+.items .dataAndTitle .itemName {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: right;
+	cursor: default;
+	outline: 0;
+}
+.items .dataAndTitle input:hover {
+	background-color: rgb(205, 212, 226);
+}
+.items .dataAndTitle .itemName.text {
+	font-size: 16px;
+	color: #636767;
+	font-weight: 400;
+}
+.items .dataAndTitle .separator {
+	padding: 0 5px;
+}
+.items.textBox .textarea {
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	color: #636767;
+	font-size: 15px;
+	outline: 0;
+}
+.items.textBox .textarea:hover {
+	background-color: rgb(205, 212, 226);
 }
 /* 个人信息 */
 .personal-info {

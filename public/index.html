@@ -100,6 +100,66 @@
 							></i>
 						</div>
 					</div>
+					<!-- 其他模块 -->
+					<div class="main-list" v-if="haveItem('求职意向')">
+						<h3 class="title">
+							<i :class="workerNeed.logo"></i>
+							其他模块
+						</h3>
+						<div class="items textBox">
+							<div class="dataAndTitle">
+								<el-date-picker
+									v-model="value1"
+									type="monthrange"
+									range-separator="-"
+									start-placeholder="开始时间"
+									end-placeholder="结束时间"
+								>
+								</el-date-picker>
+								<input
+									@click="select"
+									class="itemName"
+									type="text"
+									value="痴呆"
+								/>
+							</div>
+							<div class="dataAndTitle">
+								<span>
+									<input
+										@click="select"
+										class="itemName text"
+										type="text"
+										value="吃了个呆"
+										:style="{width:text('吃了个呆')}"
+									/>
+									<span class="separator">|</span>
+									<input
+										@click="select"
+										class="itemName text"
+										type="text"
+										value="吃了个呆"
+										:style="{width:text('吃了个呆')}"
+									/>
+								</span>
+								<input
+									@click="select"
+									class="itemName text"
+									type="text"
+									value="痴呆"
+									style="flex: 1; margin-left: 25px"
+								/>
+							</div>
+							<div class="textarea" contenteditable @click="selectDiv">
+								盖了帽了
+							</div>
+						</div>
+						<div class="edit-btn">
+							<i
+								class="el-icon-edit"
+								@click="workerNeedDialogFormVisible = true"
+							></i>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="main-tools"></div>

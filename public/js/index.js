@@ -108,6 +108,8 @@ var vm = new Vue({
 			workerNeedArr: [],
 			// 默认信息
 			workerNeedDefaultArr: [],
+			// 其他模块
+			value1: ['开始', '结束'],
 			//todo 右侧工具栏中模块显示
 			showModule: [
 				{
@@ -178,6 +180,30 @@ var vm = new Vue({
 		};
 	},
 	methods: {
+		// 计算输入框长度
+		text(value) {
+			if (value == '' || value == 0) {
+				return '100%';
+			} else {
+				return String(value).length + 'em';
+			}
+		},
+		// 文字选中
+		select(e) {
+			e.target.select();
+		},
+		selectDiv(e) {
+			if (document.selection) {
+				var range = document.body.createTextRange();
+				range.moveToElementText(e.target);
+				range.select();
+			} else if (window.getSelection) {
+				var range = document.createRange();
+				range.selectNodeContents(e.target);
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(range);
+			}
+		},
 		// 查询显示模块数组中是否含有指定模块
 		haveItem(name) {
 			for (const iterator of this.showModule) {
