@@ -23,11 +23,11 @@ var vm = new Vue({
 						content: '',
 					},
 					{
-						name: '邮箱',
+						name: '电话',
 						content: '',
 					},
 					{
-						name: '电话',
+						name: '邮箱',
 						content: '',
 					},
 				],

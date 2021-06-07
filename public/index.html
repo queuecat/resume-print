@@ -252,21 +252,32 @@
 				<el-form :model="personalInfo" label-position="left" inline>
 					<el-form-item
 						:label="item.name+'：'"
-						v-if="item.name!=='头像'"
 						v-for="item in personalInfo.default"
 					>
+						<el-select
+							v-model="personalImgShow"
+							placeholder="请选择"
+							v-if="item.name==='头像'"
+						>
+							<el-option label="显示" :value="true"></el-option>
+							<el-option label="隐藏" :value="false"></el-option>
+						</el-select>
+						<el-select
+							v-model="item.content"
+							placeholder="请选择"
+							v-else-if="item.name==='性别'"
+						>
+							<el-option label="男" value="男"></el-option>
+							<el-option label="女" value="女"></el-option>
+						</el-select>
 						<el-input
+							v-else
 							placeholder="请输入"
 							v-model="item.content"
 							autocomplete="off"
 						></el-input>
 					</el-form-item>
-					<el-form-item label="头像：">
-						<el-select v-model="personalImgShow" placeholder="请选择">
-							<el-option label="显示" :value="true"></el-option>
-							<el-option label="隐藏" :value="false"></el-option>
-						</el-select>
-					</el-form-item>
+
 					<el-collapse>
 						<el-collapse-item title="选填信息" name="1">
 							<el-form-item
@@ -274,7 +285,25 @@
 								v-if="item.name!=='头像'"
 								v-for="item in personalInfo.optional"
 							>
+								<el-select
+									v-model="item.content"
+									placeholder="请选择"
+									v-if="item.name==='政治面貌'"
+								>
+									<el-option label="中共党员" value="中共党员"></el-option>
+									<el-option
+										label="中共预备党员"
+										value="中共预备党员"
+									></el-option>
+									<el-option label="共青团员" value="共青团员"></el-option>
+									<el-option
+										label="民主党派人士"
+										value="民主党派人士"
+									></el-option>
+									<el-option label="群众" value="群众"></el-option>
+								</el-select>
 								<el-input
+									v-else
 									placeholder="请输入"
 									v-model="item.content"
 									autocomplete="off"
