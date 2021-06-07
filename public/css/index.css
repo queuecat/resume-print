@@ -14,10 +14,6 @@
 	border-radius: 10px;
 }
 
-*::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: #aaa;
-}
 html,
 body {
 	width: 100%;
@@ -386,15 +382,20 @@ p {
 	font-size: 50px;
 	position: absolute;
 	top: 0;
-	transition: all 0.3s;
-	visibility: hidden;
+	left: 0;
+	/* transition: all 0.3s; */
+	/* visibility: hidden; */
+	display: none;
 	opacity: 0;
 	color: #333;
 }
+
 .user-load:hover .el-avatar {
-	visibility: visible;
+	/* visibility: visible; */
+	display: inline-block;
 	opacity: 0.6;
 }
+
 #user {
 	display: none;
 }
