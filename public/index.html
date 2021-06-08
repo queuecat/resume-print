@@ -101,15 +101,20 @@
 						</div>
 					</div>
 					<!-- 其他模块 -->
-					<div class="main-list" v-if="haveItem('求职意向')">
+					<div
+						class="main-list"
+						v-if="haveItem(items.name)"
+						v-for="items in otherModule"
+					>
 						<h3 class="title">
 							<i :class="workerNeed.logo"></i>
-							其他模块
+							{{items.name}}
 						</h3>
-						<div class="items textBox">
+						<div class="items textBox" v-for="item in items.arr">
 							<div class="dataAndTitle">
 								<el-date-picker
-									v-model="value1"
+									v-if="item.time"
+									v-model="item.time"
 									type="monthrange"
 									range-separator="-"
 									start-placeholder="开始时间"
@@ -117,47 +122,50 @@
 								>
 								</el-date-picker>
 								<input
+									v-if="item.itemName"
 									@click="select"
 									class="itemName"
-									type="text"
-									value="痴呆"
+									:type="text"
+									:value="item.itemName"
 								/>
 							</div>
-							<div class="dataAndTitle">
+							<div class="dataAndTitle" v-if="item.title">
 								<span>
 									<input
 										@click="select"
+										@input="changeWidth(item.title,$event)"
 										class="itemName text"
 										type="text"
-										value="吃了个呆"
-										:style="{width:text('吃了个呆')}"
+										:value="item.title"
+										:style="{width:text(item.title)}"
 									/>
-									<span class="separator">|</span>
-									<input
-										@click="select"
-										class="itemName text"
-										type="text"
-										value="吃了个呆"
-										:style="{width:text('吃了个呆')}"
-									/>
+									<template v-if="item.type">
+										<span class="separator">|</span>
+										<input
+											@click="select"
+											@input="changeWidth(item.title,$event)"
+											class="itemName text"
+											type="text"
+											:value="item.type"
+											:style="{width:text(item.type)}"
+										/>
+									</template>
 								</span>
 								<input
 									@click="select"
 									class="itemName text"
 									type="text"
-									value="痴呆"
+									:value="item.typeDescribe"
+									v-if="item.typeDescribe"
 									style="flex: 1; margin-left: 25px"
 								/>
 							</div>
 							<div class="textarea" contenteditable @click="selectDiv">
-								盖了帽了
+								{{item.content}}
 							</div>
 						</div>
-						<div class="edit-btn">
-							<i
-								class="el-icon-edit"
-								@click="workerNeedDialogFormVisible = true"
-							></i>
+						<div class="edit-btn" v-for="btn in items.btns">
+							<i :class="btn.name" @click="btn.function(items)"></i>
 						</div>
 					</div>
 				</div>

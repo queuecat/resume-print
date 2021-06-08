@@ -109,7 +109,113 @@ var vm = new Vue({
 			// 默认信息
 			workerNeedDefaultArr: [],
 			// 其他模块
-			value1: ['开始', '结束'],
+			otherModule: [
+				{
+					name: '教育经历',
+					arr: [
+						{
+							time: true,
+							itemName: '学校名称',
+							title: '专业',
+							type: '学历',
+							content:
+								'大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。',
+						},
+					],
+					default: {
+						time: true,
+						itemName: '学校名称',
+						title: '专业',
+						type: '学历',
+						content:
+							'大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。',
+					},
+					btns: [
+						{
+							name: 'el-icon-plus',
+							function: this.addOtherMudle,
+						},
+					],
+				},
+				{
+					name: '工作经历',
+					arr: [
+						{
+							time: true,
+							itemName: '职业名称',
+							title: '公司名称',
+							type: '行业',
+							content:
+								'详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。',
+						},
+					],
+					default: {
+						time: true,
+						itemName: '职业名称',
+						title: '职位名称',
+						type: '行业',
+						content:
+							'详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。',
+					},
+					btns: [
+						{
+							name: 'el-icon-plus',
+							function: this.addOtherMudle,
+						},
+					],
+				},
+				,
+				{
+					name: '项目经历',
+					arr: [
+						{
+							time: true,
+							itemName: '项目名称',
+							title: '职位',
+							content:
+								'描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
+						},
+					],
+					default: {
+						time: true,
+						itemName: '项目名称',
+						title: '职位',
+						content:
+							'描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
+					},
+					btns: [
+						{
+							name: 'el-icon-plus',
+							function: this.addOtherMudle,
+						},
+					],
+				},
+				{
+					name: '自我评价',
+					arr: [
+						{
+							time: true,
+							itemName: '项目名称',
+							title: '职位',
+							content:
+								'描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
+						},
+					],
+					default: {
+						time: true,
+						itemName: '项目名称',
+						title: '职位',
+						content:
+							'描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
+					},
+					btns: [
+						{
+							name: 'el-icon-plus',
+							function: this.addOtherMudle,
+						},
+					],
+				},
+			],
 			//todo 右侧工具栏中模块显示
 			showModule: [
 				{
@@ -180,12 +286,27 @@ var vm = new Vue({
 		};
 	},
 	methods: {
+		// 新增模块内容
+		addOtherMudle(obj) {
+			obj.arr.push(obj.default);
+		},
+		// 动态改变长度
+		changeWidth(text, e) {
+			e.target.style.width = this.text(e.target.value);
+		},
 		// 计算输入框长度
 		text(value) {
 			if (value == '' || value == 0) {
-				return '100%';
+				return '1em';
 			} else {
-				return String(value).length + 'em';
+				var px = 0;
+				var em = 0;
+				for (let index = 0; index < String(value).length; index++) {
+					var element = String(value)[index];
+					if (/[a-zA-Z0-9]/.test(element)) px++;
+					else em++;
+				}
+				return 'calc(9*' + px + 'px + ' + em + 'em)';
 			}
 		},
 		// 文字选中
@@ -214,7 +335,6 @@ var vm = new Vue({
 		// 侧边栏模块添加删除
 		deleteItem(item) {
 			this.showModule.push(item);
-			console.log(this.hideModule.indexOf(item));
 			this.hideModule.splice(this.hideModule.indexOf(item), 1);
 		},
 		insertItem(item) {
