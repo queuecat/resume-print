@@ -164,7 +164,11 @@
 								{{item.content}}
 							</div>
 						</div>
-						<div class="edit-btn" v-for="btn in items.btns">
+						<div
+							class="edit-btn"
+							v-for="(btn,index) in items.btns"
+							:style="'right:'+(index*25+(index*10)+10)+'px'"
+						>
 							<i :class="btn.name" @click="btn.function(items)"></i>
 						</div>
 					</div>

@@ -135,6 +135,14 @@ var vm = new Vue({
 							name: 'el-icon-plus',
 							function: this.addOtherMudle,
 						},
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
 					],
 				},
 				{
@@ -162,6 +170,14 @@ var vm = new Vue({
 							name: 'el-icon-plus',
 							function: this.addOtherMudle,
 						},
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
 					],
 				},
 
@@ -188,6 +204,14 @@ var vm = new Vue({
 							name: 'el-icon-plus',
 							function: this.addOtherMudle,
 						},
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
 					],
 				},
 				{
@@ -212,6 +236,14 @@ var vm = new Vue({
 						{
 							name: 'el-icon-plus',
 							function: this.addOtherMudle,
+						},
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
 						},
 					],
 				},
@@ -239,6 +271,14 @@ var vm = new Vue({
 							name: 'el-icon-plus',
 							function: this.addOtherMudle,
 						},
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
 					],
 				},
 				{
@@ -253,7 +293,16 @@ var vm = new Vue({
 						content:
 							'篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。',
 					},
-					btns: [],
+					btns: [
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
+					],
 				},
 				{
 					name: '相关技能',
@@ -267,7 +316,16 @@ var vm = new Vue({
 						content:
 							'填写技能最好和求职岗位的相关性较高，主要包含专业技能、专业课程。如果实在技能较少可以写办公软件方面的技能并说明掌握程度。',
 					},
-					btns: [],
+					btns: [
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
+					],
 				},
 				{
 					name: '荣誉证书',
@@ -281,7 +339,16 @@ var vm = new Vue({
 						content:
 							'详细描述你所获得的奖励证书，于求职岗位相关性强的写在前面，只需要填写有代表性的奖项，如果有更高级别的证书，则不建议再添加基础的证书。例：全国机器人大赛一等奖。',
 					},
-					btns: [],
+					btns: [
+						{
+							name: 'el-icon-arrow-down',
+							function: this.itemDown,
+						},
+						{
+							name: 'el-icon-arrow-up',
+							function: this.itemUp,
+						},
+					],
 				},
 			],
 			//todo 右侧工具栏中模块显示
@@ -354,6 +421,36 @@ var vm = new Vue({
 		};
 	},
 	methods: {
+		// 向上按钮
+		itemUp(obj) {
+			let index = this.otherModule.indexOf(obj);
+			if (index <= 0) {
+				return;
+			}
+			for (let i = index - 1; i >= 0; i--) {
+				if (this.haveItem(this.otherModule[i].name)) {
+					let tem = obj;
+					this.otherModule.splice(index, 1);
+					this.otherModule.splice(i, 0, tem);
+					break;
+				}
+			}
+		},
+		// 向下按钮
+		itemDown(obj) {
+			let index = this.otherModule.indexOf(obj);
+			if (index >= this.otherModule.length - 1) {
+				return;
+			}
+			for (let i = index + 1; i < this.otherModule.length; i++) {
+				if (this.haveItem(this.otherModule[i].name)) {
+					let tem = obj;
+					this.otherModule.splice(index, 1);
+					this.otherModule.splice(i, 0, tem);
+					break;
+				}
+			}
+		},
 		// 新增模块内容
 		addOtherMudle(obj) {
 			obj.arr.push(obj.default);
