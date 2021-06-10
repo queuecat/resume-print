@@ -539,8 +539,11 @@ var vm = new Vue({
 
 			// 使用html2canvas将dom导出为图片
 			let opts = {
-				scale: 6, // 添加的scale 参数
-				dpi: 300,
+				scale: 2, // 添加的scale 参数
+				// dpi: 300,
+				width: shareContent.offsetWidth,
+				height: shareContent.offsetHeight,
+				y: 0,
 				useCORS: true, // 【重要】开启跨域配置
 			};
 			html2canvas(shareContent, opts).then((canvas) => {
