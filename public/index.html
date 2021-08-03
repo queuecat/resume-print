@@ -13,6 +13,18 @@
 			name="description"
 			content="简历在线制作,在页面中在线编写简历,并将制作的简历保存"
 		/>
+		<script>
+			// 检测当前页面宽度，若为移动端，则转到移动端受限页面中
+			if (window.innerWidth < 1130) {
+				location.href = '/minScreen.html';
+			}
+			window.onresize = function () {
+				console.log(window.innerWidth);
+				if (window.innerWidth < 1130) {
+					location.href = '/minScreen.html';
+				}
+			};
+		</script>
 		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="./css/index.css" />
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
