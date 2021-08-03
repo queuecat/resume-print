@@ -59,11 +59,8 @@
 									</span>
 								</div>
 
-								<div class="edit-btn">
-									<i
-										class="el-icon-edit"
-										@click="personalDialogFormVisible = true"
-									></i>
+								<div class="edit-btn" @click="personalDialogFormVisible = true">
+									<i class="el-icon-edit"></i>
 								</div>
 							</div>
 						</div>
@@ -93,11 +90,8 @@
 								</span>
 							</div>
 						</div>
-						<div class="edit-btn">
-							<i
-								class="el-icon-edit"
-								@click="workerNeedDialogFormVisible = true"
-							></i>
+						<div class="edit-btn" @click="workerNeedDialogFormVisible = true">
+							<i class="el-icon-edit"></i>
 						</div>
 					</div>
 					<!-- 其他模块 -->
@@ -168,8 +162,9 @@
 							class="edit-btn"
 							v-for="(btn,index) in items.btns"
 							:style="'right:'+(index*25+(index*10)+10)+'px'"
+							@click="btn.function(items)"
 						>
-							<i :class="btn.name" @click="btn.function(items)"></i>
+							<i :class="btn.name"></i>
 						</div>
 					</div>
 				</div>
