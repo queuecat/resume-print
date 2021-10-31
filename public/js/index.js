@@ -478,7 +478,14 @@ var vm = new Vue({
 		select(e) {
 			e.target.select();
 		},
+		selectDivBlur(e) {
+			e.target.isselect = false;
+		},
 		selectDiv(e) {
+			if (e.target.isselect) {
+				return;
+			}
+
 			if (document.selection) {
 				var range = document.body.createTextRange();
 				range.moveToElementText(e.target);
@@ -489,6 +496,7 @@ var vm = new Vue({
 				window.getSelection().removeAllRanges();
 				window.getSelection().addRange(range);
 			}
+			e.target.isselect = true;
 		},
 		// 查询显示模块数组中是否含有指定模块
 		haveItem(name) {

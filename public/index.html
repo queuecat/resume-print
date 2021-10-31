@@ -166,7 +166,12 @@
 									style="flex: 1; margin-left: 25px"
 								/>
 							</div>
-							<div class="textarea" contenteditable @click="selectDiv">
+							<div
+								class="textarea"
+								contenteditable
+								@click="selectDiv"
+								@blur="selectDivBlur"
+							>
 								{{item.content}}
 							</div>
 						</div>
