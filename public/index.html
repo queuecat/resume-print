@@ -225,6 +225,12 @@
           <el-button @click="showDownloadDialog" class="download" type="primary"
             >生成简历</el-button
           >
+          <el-button
+            @click="showChangeTemplateDialog"
+            class="download"
+            type="info"
+            >更换模版</el-button
+          >
         </div>
       </div>
       <!-- 下载模态框 -->
@@ -405,6 +411,14 @@
           >
           <el-button type="primary" @click="workerNeedShow">保存</el-button>
         </div>
+      </el-dialog>
+      <!-- 切换模版模态框 -->
+      <el-dialog
+        width="40%"
+        title="切换简历模版"
+        :visible.sync="changeTemplateDialogVisible"
+        class="personalDialog"
+      >
       </el-dialog>
     </div>
     <!-- index.js -->

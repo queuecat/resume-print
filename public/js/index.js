@@ -418,9 +418,17 @@ var vm = new Vue({
       },
       // 照片显示
       imgShow: true,
+      // css切换模态框
+      changeTemplateDialogVisible: false,
     };
   },
   methods: {
+    // css切换按钮
+    showChangeTemplateDialog() {
+      this.changeTemplateDialogVisible = true;
+    },
+    // 切换css模块
+    changeCssModule(path) {},
     // 向上按钮
     itemUp(obj) {
       let index = this.otherModule.indexOf(obj);
