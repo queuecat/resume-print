@@ -428,3 +428,7 @@ p {
   overflow: hidden;
   padding-bottom: 0;
 }
+/* 模态框body */
+body {
+  padding-right: 0px !important;
+}
