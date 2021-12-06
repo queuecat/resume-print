@@ -1,413 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="keywords"
-			content="简历,简历在线,简历制作,简历免费,免费简历,简历生成"
-		/>
-		<meta name="author" content="queuecat.top" />
-		<meta
-			name="description"
-			content="简历在线制作,在页面中在线编写简历,并将制作的简历保存"
-		/>
-		<script>
-			// 检测当前页面宽度，若为移动端，则转到移动端受限页面中
-			if (window.innerWidth < 1130) {
-				location.href = '/minScreen.html';
-			}
-			window.onresize = function () {
-				console.log(window.innerWidth);
-				if (window.innerWidth < 1130) {
-					location.href = '/minScreen.html';
-				}
-			};
-		</script>
-		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" href="./css/index.css" />
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<!-- 引入element-ui样式 -->
-		<link
-			rel="stylesheet"
-			href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
-		/>
-		<!-- 引入element-ui组件库 -->
-		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-		<!-- jspdf -->
-		<script src="https://cdn.bootcdn.net/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="简历,简历在线,简历制作,简历免费,免费简历,简历生成"
+    />
+    <meta name="author" content="queuecat.top" />
+    <meta
+      name="description"
+      content="简历在线制作,在页面中在线编写简历,并将制作的简历保存"
+    />
+    <script>
+      // 检测当前页面宽度，若为移动端，则转到移动端受限页面中
+      if (window.innerWidth < 1130) {
+        location.href = "/minScreen.html";
+      }
+      window.onresize = function () {
+        console.log(window.innerWidth);
+        if (window.innerWidth < 1130) {
+          location.href = "/minScreen.html";
+        }
+      };
+    </script>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入element-ui样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入element-ui组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- jspdf -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 
-		<!-- html2canvas -->
-		<script src="./js/html2canvas.js"></script>
-		<!-- printGit -->
-		<script src="./js/printGit.js"></script>
+    <!-- html2canvas -->
+    <script src="./js/html2canvas.js"></script>
+    <!-- printGit -->
+    <script src="./js/printGit.js"></script>
 
-		<title>简历制作</title>
-	</head>
-	<body>
-		<div id="app">
-			<div class="mainBox">
-				<div class="main">
-					<div class="header">个人简历</div>
-					<!-- 基本信息 -->
-					<div class="personal-info">
-						<div class="personalBox">
-							<h3 class="title">
-								<i :class="personalInfo.logo"></i>
-								基本信息
-							</h3>
-							<div class="items">
-								<div class="item" v-for="item in personalDataForWhere">
-									<span class="content">
-										<strong>{{item.name}}：</strong>
-										<span>{{item.content}}</span>
-										<span
-											class="btn"
-											@click="deletepersonalInfoItem(personalDataForWhere,item)"
-										>
-											<i class="el-icon-remove"></i>
-										</span>
-									</span>
-								</div>
+    <title>简历制作</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="mainBox">
+        <div class="main">
+          <div class="header">个人简历</div>
+          <!-- 基本信息 -->
+          <div class="personal-info">
+            <div class="personalBox">
+              <h3 class="title">
+                <i :class="personalInfo.logo"></i>
+                基本信息
+              </h3>
+              <div class="items">
+                <div class="item" v-for="item in personalDataForWhere">
+                  <span class="content">
+                    <strong>{{item.name}}：</strong>
+                    <span>{{item.content}}</span>
+                    <span
+                      class="btn"
+                      @click="deletepersonalInfoItem(personalDataForWhere,item)"
+                    >
+                      <i class="el-icon-remove"></i>
+                    </span>
+                  </span>
+                </div>
 
-								<div class="edit-btn" @click="personalDialogFormVisible = true">
-									<i class="el-icon-edit"></i>
-								</div>
-							</div>
-						</div>
-						<label v-show="imgShow" class="user-load" for="user">
-							<input id="user" type="file" @change="userload" />
-							<img src="./images/user.png" id="user-img" />
-							<el-avatar icon="el-icon-upload"></el-avatar>
-						</label>
-					</div>
-					<!-- 求职意向 -->
-					<div class="main-list" v-if="haveItem('求职意向')">
-						<h3 class="title">
-							<i :class="workerNeed.logo"></i>
-							求职意向
-						</h3>
-						<div class="items">
-							<div class="item" v-for="item in workerNeedDataForWhere">
-								<span class="content">
-									<strong>{{item.name}}：</strong>
-									<span>{{item.content}}</span>
-									<span
-										class="btn"
-										@click="deletepersonalInfoItem(workerNeedDataForWhere,item)"
-									>
-										<i class="el-icon-remove"></i>
-									</span>
-								</span>
-							</div>
-						</div>
-						<div class="edit-btn" @click="workerNeedDialogFormVisible = true">
-							<i class="el-icon-edit"></i>
-						</div>
-					</div>
-					<!-- 其他模块 -->
-					<div
-						class="main-list"
-						v-if="haveItem(items.name)"
-						v-for="items in otherModule"
-					>
-						<h3 class="title">
-							<i :class="workerNeed.logo"></i>
-							{{items.name}}
-						</h3>
-						<div class="items textBox" v-for="item in items.arr">
-							<div class="dataAndTitle">
-								<el-date-picker
-									v-if="item.time"
-									v-model="item.time"
-									type="monthrange"
-									range-separator="-"
-									start-placeholder="开始时间"
-									end-placeholder="结束时间"
-								>
-								</el-date-picker>
-								<input
-									v-if="item.itemName"
-									@click="select"
-									class="itemName"
-									:type="text"
-									:value="item.itemName"
-								/>
-							</div>
-							<div class="dataAndTitle" v-if="item.title">
-								<span>
-									<input
-										@click="select"
-										@input="changeWidth(item.title,$event)"
-										class="itemName text"
-										type="text"
-										:value="item.title"
-										:style="{width:text(item.title)}"
-									/>
-									<template v-if="item.type">
-										<span class="separator">|</span>
-										<input
-											@click="select"
-											@input="changeWidth(item.title,$event)"
-											class="itemName text"
-											type="text"
-											:value="item.type"
-											:style="{width:text(item.type)}"
-										/>
-									</template>
-								</span>
-								<input
-									@click="select"
-									class="itemName text"
-									type="text"
-									:value="item.typeDescribe"
-									v-if="item.typeDescribe"
-									style="flex: 1; margin-left: 25px"
-								/>
-							</div>
-							<div
-								class="textarea"
-								contenteditable
-								@click="selectDiv"
-								@blur="selectDivBlur"
-							>
-								{{item.content}}
-							</div>
-						</div>
-						<div
-							class="edit-btn"
-							v-for="(btn,index) in items.btns"
-							:style="'right:'+(index*25+(index*10)+10)+'px'"
-							@click="btn.function(items)"
-						>
-							<i :class="btn.name"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="main-tools"></div>
-			<!-- 侧边栏 -->
-			<div class="tools">
-				<h3>模块管理</h3>
-				<p>清除现有模块</p>
-				<ul class="show">
-					<li>
-						<i class="logo el-icon-user"></i>
-						<span>基本信息</span>
-						<div class="btn">
-							<!-- <el-checkbox v-model="checked">照片</el-checkbox> -->
-							<input v-model="imgShow" type="checkbox" name="" id="img" />
-							<label for="img">照片</label>
-						</div>
-					</li>
+                <div class="edit-btn" @click="personalDialogFormVisible = true">
+                  <i class="el-icon-edit"></i>
+                </div>
+              </div>
+            </div>
+            <label v-show="imgShow" class="user-load" for="user">
+              <input id="user" type="file" @change="userload" />
+              <img src="./images/user.png" id="user-img" />
+              <el-avatar icon="el-icon-upload"></el-avatar>
+            </label>
+          </div>
+          <!-- 求职意向 -->
+          <div class="main-list" v-if="haveItem('求职意向')">
+            <h3 class="title">
+              <i :class="workerNeed.logo"></i>
+              求职意向
+            </h3>
+            <div class="items">
+              <div class="item" v-for="item in workerNeedDataForWhere">
+                <span class="content">
+                  <strong>{{item.name}}：</strong>
+                  <span>{{item.content}}</span>
+                  <span
+                    class="btn"
+                    @click="deletepersonalInfoItem(workerNeedDataForWhere,item)"
+                  >
+                    <i class="el-icon-remove"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="edit-btn" @click="workerNeedDialogFormVisible = true">
+              <i class="el-icon-edit"></i>
+            </div>
+          </div>
+          <!-- 其他模块 -->
+          <div
+            class="main-list"
+            v-if="haveItem(items.name)"
+            v-for="items in otherModule"
+          >
+            <h3 class="title">
+              <i :class="workerNeed.logo"></i>
+              {{items.name}}
+            </h3>
+            <div class="items textBox" v-for="item in items.arr">
+              <div class="dataAndTitle">
+                <el-date-picker
+                  v-if="item.time"
+                  v-model="item.time"
+                  type="monthrange"
+                  range-separator="-"
+                  start-placeholder="开始时间"
+                  end-placeholder="结束时间"
+                >
+                </el-date-picker>
+                <input
+                  v-if="item.itemName"
+                  @click="select"
+                  class="itemName"
+                  :type="text"
+                  :value="item.itemName"
+                />
+              </div>
+              <div class="dataAndTitle" v-if="item.title">
+                <span>
+                  <input
+                    @click="select"
+                    @input="changeWidth(item.title,$event)"
+                    class="itemName text"
+                    type="text"
+                    :value="item.title"
+                    :style="{width:text(item.title)}"
+                  />
+                  <template v-if="item.type">
+                    <span class="separator">|</span>
+                    <input
+                      @click="select"
+                      @input="changeWidth(item.title,$event)"
+                      class="itemName text"
+                      type="text"
+                      :value="item.type"
+                      :style="{width:text(item.type)}"
+                    />
+                  </template>
+                </span>
+                <input
+                  @click="select"
+                  class="itemName text"
+                  type="text"
+                  :value="item.typeDescribe"
+                  v-if="item.typeDescribe"
+                  style="flex: 1; margin-left: 25px"
+                />
+              </div>
+              <div
+                class="textarea"
+                contenteditable
+                @click="selectDiv"
+                @blur="selectDivBlur"
+              >
+                {{item.content}}
+              </div>
+            </div>
+            <div
+              class="edit-btn"
+              v-for="(btn,index) in items.btns"
+              :style="'right:'+(index*25+(index*10)+10)+'px'"
+              @click="btn.function(items)"
+            >
+              <i :class="btn.name"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-tools"></div>
+      <!-- 侧边栏 -->
+      <div class="tools">
+        <h3>模块管理</h3>
+        <p>清除现有模块</p>
+        <ul class="show">
+          <li>
+            <i class="logo el-icon-user"></i>
+            <span>基本信息</span>
+            <div class="btn">
+              <!-- <el-checkbox v-model="checked">照片</el-checkbox> -->
+              <input v-model="imgShow" type="checkbox" name="" id="img" />
+              <label for="img">照片</label>
+            </div>
+          </li>
 
-					<li v-for="item in showModule">
-						<i class="logo" :class="item.logo"></i>
-						<span>{{item.name}}</span>
-						<div class="show btn" @click="insertItem(item)">
-							<i class="el-icon-remove-outline"></i>
-						</div>
-					</li>
-				</ul>
-				<p v-show="hideModule.length > 0">添加模块</p>
-				<ul class="hide">
-					<li v-for="item in hideModule" @click="deleteItem(item)">
-						<i class="logo" :class="item.logo"></i>
-						<span>{{item.name}}</span>
-						<p class="content">{{item.content}}</p>
-						<div class="show btn">
-							<i class="el-icon-circle-plus-outline"></i>
-						</div>
-					</li>
-				</ul>
-				<div class="saveBtnBox">
-					<el-button @click="showDownloadDialog" class="download" type="primary"
-						>生成简历</el-button
-					>
-				</div>
-			</div>
-			<!-- 下载模态框 -->
-			<el-dialog
-				width="30%"
-				title="生成简历"
-				:visible.sync="downloadDialogFormVisible"
-			>
-				<el-form :model="downloadForm" label-position="top">
-					<el-form-item label="文档名称">
-						<el-input
-							v-model="downloadForm.downName"
-							autocomplete="off"
-						></el-input>
-					</el-form-item>
-					<el-form-item label="文档类型">
-						<el-select v-model="downloadForm.type" placeholder="请选择活动区域">
-							<el-tooltip
-								class="item"
-								effect="dark"
-								content="适用于发送给HR，打印或投递简历"
-								placement="right"
-							>
-								<el-option label="PDF文档(*.pdf)" value="pdf"></el-option>
-							</el-tooltip>
-							<el-tooltip
-								class="item"
-								effect="dark"
-								content="生成长图简历，方便分享"
-								placement="right"
-							>
-								<el-option label="图片文档(*.png)" value="img"></el-option>
-							</el-tooltip>
-						</el-select>
-					</el-form-item>
-				</el-form>
-				<div slot="footer" class="dialog-footer">
-					<el-button @click="downloadDialogFormVisible = false"
-						>取 消</el-button
-					>
-					<el-button type="primary" @click="download">生成为文档</el-button>
-				</div>
-			</el-dialog>
-			<!-- 基本信息模态框 -->
-			<el-dialog
-				width="40%"
-				title="基本信息"
-				:visible.sync="personalDialogFormVisible"
-				class="personalDialog"
-			>
-				<el-form :model="personalInfo" label-position="left" inline>
-					<el-form-item
-						:label="item.name+'：'"
-						v-for="item in personalInfo.default"
-					>
-						<el-select
-							v-model="personalImgShow"
-							placeholder="请选择"
-							v-if="item.name==='头像'"
-						>
-							<el-option label="显示" :value="true"></el-option>
-							<el-option label="隐藏" :value="false"></el-option>
-						</el-select>
-						<el-select
-							v-model="item.content"
-							placeholder="请选择"
-							v-else-if="item.name==='性别'"
-						>
-							<el-option label="男" value="男"></el-option>
-							<el-option label="女" value="女"></el-option>
-						</el-select>
-						<el-input
-							v-else
-							placeholder="请输入"
-							v-model="item.content"
-							autocomplete="off"
-						></el-input>
-					</el-form-item>
+          <li v-for="item in showModule">
+            <i class="logo" :class="item.logo"></i>
+            <span>{{item.name}}</span>
+            <div class="show btn" @click="insertItem(item)">
+              <i class="el-icon-remove-outline"></i>
+            </div>
+          </li>
+        </ul>
+        <p v-show="hideModule.length > 0">添加模块</p>
+        <ul class="hide">
+          <li v-for="item in hideModule" @click="deleteItem(item)">
+            <i class="logo" :class="item.logo"></i>
+            <span>{{item.name}}</span>
+            <p class="content">{{item.content}}</p>
+            <div class="show btn">
+              <i class="el-icon-circle-plus-outline"></i>
+            </div>
+          </li>
+        </ul>
+        <div class="saveBtnBox">
+          <el-button @click="showDownloadDialog" class="download" type="primary"
+            >生成简历</el-button
+          >
+        </div>
+      </div>
+      <!-- 下载模态框 -->
+      <el-dialog
+        width="30%"
+        title="生成简历"
+        :visible.sync="downloadDialogFormVisible"
+      >
+        <el-form :model="downloadForm" label-position="top">
+          <el-form-item label="文档名称">
+            <el-input
+              v-model="downloadForm.downName"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="文档类型">
+            <el-select v-model="downloadForm.type" placeholder="请选择活动区域">
+              <el-tooltip
+                class="item"
+                effect="dark"
+                content="适用于发送给HR，打印或投递简历"
+                placement="right"
+              >
+                <el-option label="PDF文档(*.pdf)" value="pdf"></el-option>
+              </el-tooltip>
+              <el-tooltip
+                class="item"
+                effect="dark"
+                content="生成长图简历，方便分享"
+                placement="right"
+              >
+                <el-option label="图片文档(*.png)" value="img"></el-option>
+              </el-tooltip>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="downloadDialogFormVisible = false"
+            >取 消</el-button
+          >
+          <el-button type="primary" @click="download">生成为文档</el-button>
+        </div>
+      </el-dialog>
+      <!-- 基本信息模态框 -->
+      <el-dialog
+        width="40%"
+        title="基本信息"
+        :visible.sync="personalDialogFormVisible"
+        class="personalDialog"
+      >
+        <el-form :model="personalInfo" label-position="left" inline>
+          <el-form-item
+            :label="item.name+'：'"
+            v-for="item in personalInfo.default"
+          >
+            <el-select
+              v-model="personalImgShow"
+              placeholder="请选择"
+              v-if="item.name==='头像'"
+            >
+              <el-option label="显示" :value="true"></el-option>
+              <el-option label="隐藏" :value="false"></el-option>
+            </el-select>
+            <el-select
+              v-model="item.content"
+              placeholder="请选择"
+              v-else-if="item.name==='性别'"
+            >
+              <el-option label="男" value="男"></el-option>
+              <el-option label="女" value="女"></el-option>
+            </el-select>
+            <el-input
+              v-else
+              placeholder="请输入"
+              v-model="item.content"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
 
-					<el-collapse>
-						<el-collapse-item title="选填信息" name="1">
-							<el-form-item
-								:label="item.name+'：'"
-								v-if="item.name!=='头像'"
-								v-for="item in personalInfo.optional"
-							>
-								<el-select
-									v-model="item.content"
-									placeholder="请选择"
-									v-if="item.name==='政治面貌'"
-								>
-									<el-option label="中共党员" value="中共党员"></el-option>
-									<el-option
-										label="中共预备党员"
-										value="中共预备党员"
-									></el-option>
-									<el-option label="共青团员" value="共青团员"></el-option>
-									<el-option
-										label="民主党派人士"
-										value="民主党派人士"
-									></el-option>
-									<el-option label="群众" value="群众"></el-option>
-								</el-select>
-								<el-input
-									v-else
-									placeholder="请输入"
-									v-model="item.content"
-									autocomplete="off"
-								></el-input>
-							</el-form-item>
-						</el-collapse-item>
-					</el-collapse>
-				</el-form>
-				<div slot="footer" class="dialog-footer">
-					<el-button @click="personalDialogFormVisible = false"
-						>取 消</el-button
-					>
-					<el-button type="primary" @click="editpersonalInfo">保存</el-button>
-				</div>
-			</el-dialog>
-			<!-- 求职意向模态框 -->
-			<el-dialog
-				width="40%"
-				title="求职意向"
-				:visible.sync="workerNeedDialogFormVisible"
-				class="personalDialog"
-			>
-				<el-form :model="workerNeed" label-position="left" inline>
-					<el-form-item
-						:label="item.name+'：'"
-						v-for="item in workerNeed.default"
-					>
-						<el-select
-							v-model="item.content"
-							placeholder="请选择求职类型"
-							v-if="item.name==='求职类型'"
-						>
-							<el-option label="社招" value="社招"></el-option>
-							<el-option label="校招" value="校招"></el-option>
-							<el-option label="实习" value="实习"></el-option>
-						</el-select>
-						<el-input
-							placeholder="请输入"
-							v-model="item.content"
-							autocomplete="off"
-							v-else
-						></el-input>
-					</el-form-item>
-					<el-collapse>
-						<el-collapse-item title="选填信息" name="1">
-							<el-form-item
-								:label="item.name+'：'"
-								v-for="item in workerNeed.optional"
-							>
-								<el-select
-									v-model="item.content"
-									placeholder="请选择当前状态"
-									v-if="item.name==='当前状态'"
-								>
-									<el-option label="随时到岗" value="随时到岗"></el-option>
-									<el-option label="月内到岗" value="月内到岗"></el-option>
-									<el-option label="考虑机会" value="考虑机会"></el-option>
-									<el-option label="暂不考虑" value="暂不考虑"></el-option>
-								</el-select>
-								<el-input
-									placeholder="请输入"
-									v-model="item.content"
-									autocomplete="off"
-									v-else
-								></el-input>
-							</el-form-item>
-						</el-collapse-item>
-					</el-collapse>
-				</el-form>
-				<div slot="footer" class="dialog-footer">
-					<el-button @click="workerNeedDialogFormVisible= false"
-						>取 消</el-button
-					>
-					<el-button type="primary" @click="workerNeedShow">保存</el-button>
-				</div>
-			</el-dialog>
-		</div>
-		<!-- index.js -->
-		<script src="./js/index.js"></script>
-	</body>
+          <el-collapse>
+            <el-collapse-item title="选填信息" name="1">
+              <el-form-item
+                :label="item.name+'：'"
+                v-if="item.name!=='头像'"
+                v-for="item in personalInfo.optional"
+              >
+                <el-select
+                  v-model="item.content"
+                  placeholder="请选择"
+                  v-if="item.name==='政治面貌'"
+                >
+                  <el-option label="中共党员" value="中共党员"></el-option>
+                  <el-option
+                    label="中共预备党员"
+                    value="中共预备党员"
+                  ></el-option>
+                  <el-option label="共青团员" value="共青团员"></el-option>
+                  <el-option
+                    label="民主党派人士"
+                    value="民主党派人士"
+                  ></el-option>
+                  <el-option label="群众" value="群众"></el-option>
+                </el-select>
+                <el-input
+                  v-else
+                  placeholder="请输入"
+                  v-model="item.content"
+                  autocomplete="off"
+                ></el-input>
+              </el-form-item>
+            </el-collapse-item>
+          </el-collapse>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="personalDialogFormVisible = false"
+            >取 消</el-button
+          >
+          <el-button type="primary" @click="editpersonalInfo">保存</el-button>
+        </div>
+      </el-dialog>
+      <!-- 求职意向模态框 -->
+      <el-dialog
+        width="40%"
+        title="求职意向"
+        :visible.sync="workerNeedDialogFormVisible"
+        class="personalDialog"
+      >
+        <el-form :model="workerNeed" label-position="left" inline>
+          <el-form-item
+            :label="item.name+'：'"
+            v-for="item in workerNeed.default"
+          >
+            <el-select
+              v-model="item.content"
+              placeholder="请选择求职类型"
+              v-if="item.name==='求职类型'"
+            >
+              <el-option label="社招" value="社招"></el-option>
+              <el-option label="校招" value="校招"></el-option>
+              <el-option label="实习" value="实习"></el-option>
+            </el-select>
+            <el-input
+              placeholder="请输入"
+              v-model="item.content"
+              autocomplete="off"
+              v-else
+            ></el-input>
+          </el-form-item>
+          <el-collapse>
+            <el-collapse-item title="选填信息" name="1">
+              <el-form-item
+                :label="item.name+'：'"
+                v-for="item in workerNeed.optional"
+              >
+                <el-select
+                  v-model="item.content"
+                  placeholder="请选择当前状态"
+                  v-if="item.name==='当前状态'"
+                >
+                  <el-option label="随时到岗" value="随时到岗"></el-option>
+                  <el-option label="月内到岗" value="月内到岗"></el-option>
+                  <el-option label="考虑机会" value="考虑机会"></el-option>
+                  <el-option label="暂不考虑" value="暂不考虑"></el-option>
+                </el-select>
+                <el-input
+                  placeholder="请输入"
+                  v-model="item.content"
+                  autocomplete="off"
+                  v-else
+                ></el-input>
+              </el-form-item>
+            </el-collapse-item>
+          </el-collapse>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="workerNeedDialogFormVisible= false"
+            >取 消</el-button
+          >
+          <el-button type="primary" @click="workerNeedShow">保存</el-button>
+        </div>
+      </el-dialog>
+    </div>
+    <!-- index.js -->
+    <script src="./js/index.js"></script>
+  </body>
 </html>
