@@ -403,6 +403,9 @@ p {
   display: none;
 }
 /* 基本信息模态框 */
+.personalDialog .el-dialog {
+  min-width: 750px;
+}
 .personalDialog .el-form {
   display: flex;
   justify-content: flex-start;
@@ -419,4 +422,9 @@ p {
 }
 .personalDialog .el-collapse {
   width: 100%;
+}
+/* 选填信息 */
+.personalDialog .el-dialog .el-collapse-item__content {
+  overflow: hidden;
+  padding-bottom: 0;
 }
