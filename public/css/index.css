@@ -1,422 +1,422 @@
 * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 *::-webkit-scrollbar {
-	width: 1px;
-	height: 1px;
-	background-color: #fff;
+  width: 1px;
+  height: 1px;
+  background-color: #fff;
 }
 
 *::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-	background: #fff;
-	border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 10px;
 }
 
 html,
 body {
-	width: 100%;
-	min-height: 100%;
-	background-color: rgb(245, 247, 249);
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(245, 247, 249);
 }
 li {
-	list-style: none;
+  list-style: none;
 }
 #app {
-	width: 100%;
-	min-height: 100%;
-	display: flex;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
 }
 
 /* 简历主体 */
 .mainBox {
-	flex: 1;
-	/* display: flex;
+  flex: 1;
+  /* display: flex;
 	justify-content: center; */
-	padding: 20px 0;
+  padding: 20px 0;
 }
 .main {
-	width: 820px;
-	min-height: 100%;
-	background-color: #fff;
-	position: relative;
-	margin: 0 auto;
+  width: 820px;
+  min-height: 100%;
+  background-color: #fff;
+  position: relative;
+  margin: 0 auto;
 }
 .main::after {
-	content: '';
-	background-color: rgb(47, 85, 150);
-	height: 10px;
-	width: 820px;
-	display: block;
-	position: absolute;
-	top: 0px;
+  content: "";
+  background-color: rgb(47, 85, 150);
+  height: 10px;
+  width: 820px;
+  display: block;
+  position: absolute;
+  top: 0px;
 }
 .header {
-	height: 50px;
-	margin: 0 40px;
-	background-color: rgb(47, 85, 150);
-	border-radius: 10px;
-	text-align: center;
-	line-height: 50px;
-	font-size: 25px;
-	font-weight: 900;
-	color: #fff;
+  height: 50px;
+  margin: 0 40px;
+  background-color: rgb(47, 85, 150);
+  border-radius: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 25px;
+  font-weight: 900;
+  color: #fff;
 }
 
 /* 侧边工具栏 */
 .main-tools {
-	height: 100%;
-	width: 300px;
-	background-color: #fff;
+  height: 100%;
+  width: 300px;
+  background-color: #fff;
 }
 .tools {
-	overflow-y: auto;
-	height: 100%;
-	width: 300px;
-	background-color: #fff;
-	position: fixed;
-	right: 0;
+  overflow-y: auto;
+  height: 100%;
+  width: 300px;
+  background-color: #fff;
+  position: fixed;
+  right: 0;
 }
 .tools h3,
 p {
-	margin: 10px;
-	color: rgb(36, 47, 68);
+  margin: 10px;
+  color: rgb(36, 47, 68);
 }
 .tools p {
-	font-size: 14px;
-	color: rgb(118, 120, 123);
+  font-size: 14px;
+  color: rgb(118, 120, 123);
 }
 .tools ul {
-	margin: 20px;
-	color: #545d6d;
+  margin: 20px;
+  color: #545d6d;
 }
 .tools ul li {
-	background-color: rgb(245, 247, 249);
-	padding: 10px;
-	font-size: 12px;
-	position: relative;
-	margin-bottom: 10px;
+  background-color: rgb(245, 247, 249);
+  padding: 10px;
+  font-size: 12px;
+  position: relative;
+  margin-bottom: 10px;
 }
 .tools ul li i {
-	color: rgb(139, 151, 175);
+  color: rgb(139, 151, 175);
 }
 .tools .logo {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 .tools ul li .btn {
-	position: absolute;
-	top: 50%;
-	right: 15px;
-	transform: translateY(-50%);
-	font-size: 15px;
-	cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 15px;
+  cursor: pointer;
 }
 .tools .show li:hover .btn i::before {
-	content: '\e7a2';
-	color: rgb(255, 88, 88);
+  content: "\e7a2";
+  color: rgb(255, 88, 88);
 }
 .tools ul li .btn input {
-	cursor: pointer;
-	border: 1px;
-	width: 12px;
-	height: 12px;
-	vertical-align: middle;
+  cursor: pointer;
+  border: 1px;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
 }
-.tools ul li .btn input[type='checkbox'] {
-	color: red;
+.tools ul li .btn input[type="checkbox"] {
+  color: red;
 }
 .tools ul li .btn label {
-	font-size: 12px;
-	user-select: none;
-	cursor: pointer;
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
 }
 .tools ul li .content {
-	margin: 0;
-	color: rgb(142, 150, 164);
-	padding: 5px 0;
+  margin: 0;
+  color: rgb(142, 150, 164);
+  padding: 5px 0;
 }
 .tools .hide li {
-	cursor: pointer;
+  cursor: pointer;
 }
 .tools .hide li:hover .btn i::before {
-	content: '\e7a0';
-	color: rgb(63, 200, 87);
+  content: "\e7a0";
+  color: rgb(63, 200, 87);
 }
 .saveBtnBox {
-	display: flex;
-	justify-content: center;
-	margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 /* 模块设计 */
 .main-list {
-	margin: 0 50px 30px 50px;
-	padding: 0 10px;
-	border: 1px transparent dashed;
-	position: relative;
+  margin: 0 50px 30px 50px;
+  padding: 0 10px;
+  border: 1px transparent dashed;
+  position: relative;
 }
 .main-list:hover {
-	background-color: rgb(246, 250, 251);
-	border: 1px rgb(198, 211, 228) dashed;
+  background-color: rgb(246, 250, 251);
+  border: 1px rgb(198, 211, 228) dashed;
 }
 .main-list .title {
-	margin-bottom: 10px;
-	background-color: rgb(47, 85, 150);
-	width: 128px;
-	height: 35px;
-	color: #fff;
-	text-align: center;
-	line-height: 35px;
-	font-weight: 400;
-	border: 1px rgb(19, 60, 131) solid;
+  margin-bottom: 10px;
+  background-color: rgb(47, 85, 150);
+  width: 128px;
+  height: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  font-weight: 400;
+  border: 1px rgb(19, 60, 131) solid;
 }
 .main-list .edit-btn {
-	width: 25px;
-	height: 25px;
-	background-color: #fff;
-	color: rgb(44, 105, 249);
-	border: 1px solid rgb(44, 105, 249);
-	text-align: center;
-	line-height: 25px;
-	border-radius: 3px;
-	font-size: 15px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	display: none;
-	cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  color: rgb(44, 105, 249);
+  border: 1px solid rgb(44, 105, 249);
+  text-align: center;
+  line-height: 25px;
+  border-radius: 3px;
+  font-size: 15px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  cursor: pointer;
 }
 .main-list:hover .edit-btn {
-	display: block;
+  display: block;
 }
 .items {
-	padding: 10px;
-	border: 1px transparent dashed;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	position: relative;
+  padding: 10px;
+  border: 1px transparent dashed;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
 }
 .items .edit-btn {
-	width: 25px;
-	height: 25px;
-	background-color: #fff;
-	color: rgb(44, 105, 249);
-	border: 1px solid rgb(44, 105, 249);
-	text-align: center;
-	line-height: 25px;
-	border-radius: 3px;
-	font-size: 15px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	display: none;
-	cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  color: rgb(44, 105, 249);
+  border: 1px solid rgb(44, 105, 249);
+  text-align: center;
+  line-height: 25px;
+  border-radius: 3px;
+  font-size: 15px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  cursor: pointer;
 }
 .items:hover .edit-btn {
-	display: block;
+  display: block;
 }
 .items .item {
-	min-width: 50%;
-	margin: 5px 0;
+  min-width: 50%;
+  margin: 5px 0;
 }
 .items .item .content {
-	cursor: pointer;
-	padding: 5px 0;
+  cursor: pointer;
+  padding: 5px 0;
 }
 .items .item .content:hover {
-	background-color: rgb(228, 242, 245);
+  background-color: rgb(228, 242, 245);
 }
 .items .item .content strong {
-	color: rgb(55, 55, 55);
+  color: rgb(55, 55, 55);
 }
 .items .item .content .btn {
-	display: none;
-	position: relative;
-	top: -15px;
-	right: -5px;
-	color: rgb(255, 88, 88);
+  display: none;
+  position: relative;
+  top: -15px;
+  right: -5px;
+  color: rgb(255, 88, 88);
 }
 .items .item .content:hover .btn {
-	display: inline-block;
+  display: inline-block;
 }
 .items .dataAndTitle {
-	margin-bottom: 10px;
-	height: max-content;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
+  margin-bottom: 10px;
+  height: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .items.textBox {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .items.textBox:hover {
-	background-color: rgb(216, 229, 251);
+  background-color: rgb(216, 229, 251);
 }
 .items .dataAndTitle .el-date-editor {
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-	width: 200px !important;
-	line-height: normal;
-	height: auto;
-	padding-left: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 200px !important;
+  line-height: normal;
+  height: auto;
+  padding-left: 0;
 }
 .items .el-date-editor i {
-	display: none;
+  display: none;
 }
 .items .el-date-editor input {
-	background-color: transparent;
-	font-size: 16px;
-	line-height: normal;
-	cursor: pointer;
-	height: auto;
-	font-weight: 600;
-	color: #000;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: normal;
+  cursor: pointer;
+  height: auto;
+  font-weight: 600;
+  color: #000;
 }
 .items .el-date-editor input:first-of-type {
-	text-align: left;
+  text-align: left;
 }
 .items .el-date-editor input:last-of-type {
-	text-align: right;
+  text-align: right;
 }
 .items .el-date-editor input::-webkit-input-placeholder {
-	/* WebKit browsers */
-	color: #000;
+  /* WebKit browsers */
+  color: #000;
 }
 .items .el-date-editor input:-moz-placeholder {
-	/* Mozilla Firefox 4 to 18 */
-	color: #000;
+  /* Mozilla Firefox 4 to 18 */
+  color: #000;
 }
 .items .el-date-editor input::-moz-placeholder {
-	/* Mozilla Firefox 19+ */
-	color: #000;
+  /* Mozilla Firefox 19+ */
+  color: #000;
 }
 .items .el-date-editor input:-ms-input-placeholder {
-	/* Internet Explorer 10+ */
-	color: #000;
+  /* Internet Explorer 10+ */
+  color: #000;
 }
 .items .el-date-editor .el-range-separator {
-	line-height: normal;
-	height: auto;
-	font-weight: 600;
-	padding: 0;
+  line-height: normal;
+  height: auto;
+  font-weight: 600;
+  padding: 0;
 }
 .items .dataAndTitle .itemName {
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: 600;
-	text-align: right;
-	cursor: default;
-	outline: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  cursor: default;
+  outline: 0;
 }
 .items .dataAndTitle input:hover {
-	background-color: rgb(205, 212, 226);
+  background-color: rgb(205, 212, 226);
 }
 .items .dataAndTitle .itemName.text {
-	font-size: 16px;
-	color: #636767;
-	font-weight: 400;
+  font-size: 16px;
+  color: #636767;
+  font-weight: 400;
 }
 .items .dataAndTitle .separator {
-	padding: 0 5px;
+  padding: 0 5px;
 }
 .items.textBox .textarea {
-	background-color: transparent;
-	border: none;
-	width: 100%;
-	color: #636767;
-	font-size: 15px;
-	outline: 0;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  color: #636767;
+  font-size: 15px;
+  outline: 0;
 }
 .items.textBox .textarea:hover {
-	background-color: rgb(205, 212, 226);
+  background-color: rgb(205, 212, 226);
 }
 /* 个人信息 */
 .personal-info {
-	margin: 40px 50px 30px 50px;
-	padding: 10px;
-	border: 1px transparent dashed;
-	display: flex;
-	align-items: flex-end;
+  margin: 40px 50px 30px 50px;
+  padding: 10px;
+  border: 1px transparent dashed;
+  display: flex;
+  align-items: flex-end;
 }
 .personalBox {
-	/* 两栏自适应布局 */
-	flex: 1;
+  /* 两栏自适应布局 */
+  flex: 1;
 }
 .personal-info .title {
-	margin-bottom: 10px;
-	background-color: rgb(47, 85, 150);
-	width: 128px;
-	height: 35px;
-	color: #fff;
-	text-align: center;
-	line-height: 35px;
-	font-weight: 400;
-	border: 1px rgb(19, 60, 131) solid;
+  margin-bottom: 10px;
+  background-color: rgb(47, 85, 150);
+  width: 128px;
+  height: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  font-weight: 400;
+  border: 1px rgb(19, 60, 131) solid;
 }
 .personal-info .items:hover {
-	background-color: rgb(246, 250, 251);
-	border: 1px rgb(198, 211, 228) dashed;
+  background-color: rgb(246, 250, 251);
+  border: 1px rgb(198, 211, 228) dashed;
 }
 .user-load {
-	width: 135px;
-	height: 180px;
-	margin-left: 15px;
-	position: relative;
-	cursor: pointer;
+  width: 135px;
+  height: 180px;
+  margin-left: 15px;
+  position: relative;
+  cursor: pointer;
 }
 .user-load img {
-	width: 100%;
-	height: 100%;
-	border-radius: 0;
-	line-height: 180px;
-	font-size: 50px;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  line-height: 180px;
+  font-size: 50px;
+  object-fit: cover;
 }
 .user-load .el-avatar {
-	width: 100%;
-	height: 100%;
-	border-radius: 0;
-	line-height: 180px;
-	font-size: 50px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	/* transition: all 0.3s; */
-	/* visibility: hidden; */
-	display: none;
-	opacity: 0;
-	color: #333;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  line-height: 180px;
+  font-size: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* transition: all 0.3s; */
+  /* visibility: hidden; */
+  display: none;
+  opacity: 0;
+  color: #333;
 }
 
 .user-load:hover .el-avatar {
-	/* visibility: visible; */
-	display: inline-block;
-	opacity: 0.6;
+  /* visibility: visible; */
+  display: inline-block;
+  opacity: 0.6;
 }
 
 #user {
-	display: none;
+  display: none;
 }
 /* 基本信息模态框 */
 .personalDialog .el-form {
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .personalDialog .el-form-item {
-	width: 45%;
+  width: 45%;
 }
 .personalDialog .el-form--inline .el-form-item {
-	margin-right: 0;
-	display: flex;
-	float: left;
-	justify-content: flex-end;
+  margin-right: 0;
+  display: flex;
+  float: left;
+  justify-content: flex-end;
 }
 .personalDialog .el-collapse {
-	width: 100%;
+  width: 100%;
 }
