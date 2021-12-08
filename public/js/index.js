@@ -1,64 +1,64 @@
 var vm = new Vue({
-  el: "#app",
+  el: '#app',
   data() {
     return {
       //todo 基本信息
       personalInfo: {
-        logo: "el-icon-user-solid",
+        logo: 'el-icon-user-solid',
         default: [
           {
-            name: "姓名",
-            content: "",
+            name: '姓名',
+            content: '',
           },
           {
-            name: "性别",
-            content: "",
+            name: '性别',
+            content: '',
           },
           {
-            name: "年龄",
-            content: "",
+            name: '年龄',
+            content: '',
           },
           {
-            name: "头像",
-            content: "",
+            name: '头像',
+            content: '',
           },
           {
-            name: "电话",
-            content: "",
+            name: '电话',
+            content: '',
           },
           {
-            name: "邮箱",
-            content: "",
+            name: '邮箱',
+            content: '',
           },
         ],
         optional: [
           {
-            name: "民族",
-            content: "",
+            name: '民族',
+            content: '',
           },
           {
-            name: "户籍",
-            content: "",
+            name: '户籍',
+            content: '',
           },
           {
-            name: "现所在地",
-            content: "",
+            name: '现所在地',
+            content: '',
           },
           {
-            name: "开始工作时间",
-            content: "",
+            name: '开始工作时间',
+            content: '',
           },
           {
-            name: "政治面貌",
-            content: "",
+            name: '政治面貌',
+            content: '',
           },
           {
-            name: "身高",
-            content: "",
+            name: '身高',
+            content: '',
           },
           {
-            name: "体重",
-            content: "",
+            name: '体重',
+            content: '',
           },
         ],
       },
@@ -72,33 +72,33 @@ var vm = new Vue({
       personalImgShow: true,
       //todo 求职意向
       workerNeed: {
-        logo: "el-icon-s-custom",
+        logo: 'el-icon-s-custom',
         default: [
           {
-            name: "求职岗位",
-            content: "",
+            name: '求职岗位',
+            content: '',
           },
           {
-            name: "意向城市",
-            content: "",
+            name: '意向城市',
+            content: '',
           },
           {
-            name: "期望薪水",
-            content: "",
+            name: '期望薪水',
+            content: '',
           },
           {
-            name: "求职类型",
-            content: "",
+            name: '求职类型',
+            content: '',
           },
         ],
         optional: [
           {
-            name: "期望行业",
-            content: "",
+            name: '期望行业',
+            content: '',
           },
           {
-            name: "当前状态",
-            content: "",
+            name: '当前状态',
+            content: '',
           },
         ],
       },
@@ -111,241 +111,241 @@ var vm = new Vue({
       // 其他模块
       otherModule: [
         {
-          name: "教育经历",
+          name: '教育经历',
           arr: [
             {
               time: true,
-              itemName: "学校名称",
-              title: "专业",
-              type: "学历",
+              itemName: '学校名称',
+              title: '专业',
+              type: '学历',
               content:
-                "大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。",
+                '大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。',
             },
           ],
           default: {
             time: true,
-            itemName: "学校名称",
-            title: "专业",
-            type: "学历",
+            itemName: '学校名称',
+            title: '专业',
+            type: '学历',
             content:
-              "大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。",
+              '大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。',
           },
           btns: [
             {
-              name: "el-icon-plus",
+              name: 'el-icon-plus',
               function: this.addOtherMudle,
             },
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "工作经历",
+          name: '工作经历',
           arr: [
             {
               time: true,
-              itemName: "职业名称",
-              title: "公司名称",
-              type: "行业",
+              itemName: '职业名称',
+              title: '公司名称',
+              type: '行业',
               content:
-                "详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。",
+                '详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。',
             },
           ],
           default: {
             time: true,
-            itemName: "职业名称",
-            title: "职位名称",
-            type: "行业",
+            itemName: '职业名称',
+            title: '职位名称',
+            type: '行业',
             content:
-              "详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。",
+              '详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。',
           },
           btns: [
             {
-              name: "el-icon-plus",
+              name: 'el-icon-plus',
               function: this.addOtherMudle,
             },
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
 
         {
-          name: "项目经历",
+          name: '项目经历',
           arr: [
             {
               time: true,
-              itemName: "项目名称",
-              title: "职位",
+              itemName: '项目名称',
+              title: '职位',
               content:
-                "描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。",
+                '描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
             },
           ],
           default: {
             time: true,
-            itemName: "项目名称",
-            title: "职位",
+            itemName: '项目名称',
+            title: '职位',
             content:
-              "描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。",
+              '描述你参与过的项目及你在项目过程中所作的工作，内容简洁清晰，突出于求职岗位匹配的重点。具体可以从以下几个方面入手：1、项目内容 2、工作内容 3、项目成果。',
           },
           btns: [
             {
-              name: "el-icon-plus",
+              name: 'el-icon-plus',
               function: this.addOtherMudle,
             },
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "在校经历",
+          name: '在校经历',
           arr: [
             {
               time: true,
-              itemName: "社团/活动名称",
-              title: "职位",
+              itemName: '社团/活动名称',
+              title: '职位',
               content:
-                "紧紧与求职职位的任职要求和岗位工作内容相结合，体现自己与之相关的经历、能力、性格、品质等等。内容应精简干练，要有结果导向思维和数据化思维，实践成果和收获一定要写，且要用量化的数据或实际的评价来展现。",
+                '紧紧与求职职位的任职要求和岗位工作内容相结合，体现自己与之相关的经历、能力、性格、品质等等。内容应精简干练，要有结果导向思维和数据化思维，实践成果和收获一定要写，且要用量化的数据或实际的评价来展现。',
             },
           ],
           default: {
             time: true,
-            itemName: "社团/活动名称",
-            title: "职位",
+            itemName: '社团/活动名称',
+            title: '职位',
             content:
-              "紧紧与求职职位的任职要求和岗位工作内容相结合，体现自己与之相关的经历、能力、性格、品质等等。内容应精简干练，要有结果导向思维和数据化思维，实践成果和收获一定要写，且要用量化的数据或实际的评价来展现。",
+              '紧紧与求职职位的任职要求和岗位工作内容相结合，体现自己与之相关的经历、能力、性格、品质等等。内容应精简干练，要有结果导向思维和数据化思维，实践成果和收获一定要写，且要用量化的数据或实际的评价来展现。',
           },
           btns: [
             {
-              name: "el-icon-plus",
+              name: 'el-icon-plus',
               function: this.addOtherMudle,
             },
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "实习经历",
+          name: '实习经历',
           arr: [
             {
               time: true,
-              itemName: "公司名称",
-              title: "职位名称",
+              itemName: '公司名称',
+              title: '职位名称',
               content:
-                "详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。",
+                '详细描述你的职责范围、工作内容和工作成果。最新的工作经验放在最前，描述尽量简洁，尽量写与职位相匹配的内容，将有助于HR第一时间发现你的亮点。如果是不知名企业，可以在工作内容的第一句话加上简短的公司或主要产品介绍，尽可能用数字说明成绩，突出分析能力、团队协作能力、解决问题的能力等工作上所需的专业素质。',
             },
           ],
           default: {
             time: true,
-            itemName: "学校名称",
-            title: "专业",
-            type: "学历",
+            itemName: '学校名称',
+            title: '专业',
+            type: '学历',
             content:
-              "大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。",
+              '大学之前的教育经历建议不写，尽量写于求职行业或者求职岗位相关的课程，有交流交换的经验可以在教育经历中展示。工作年限较多或成绩自认不够优异，则可以直接将教育背景清晰罗列后，重点丰富其他模块。成绩优异的话建议写上GPA及排名等信息，尽量简洁。',
           },
           btns: [
             {
-              name: "el-icon-plus",
+              name: 'el-icon-plus',
               function: this.addOtherMudle,
             },
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "自我评价",
+          name: '自我评价',
           arr: [
             {
               content:
-                "篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。",
+                '篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。',
             },
           ],
           default: {
             content:
-              "篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。",
+              '篇幅不要太长，注意结合简历整体的美观度，内容中应总结经验和特长，突出符合求职岗位职位描述的特点，避免使用过多形容词。例：拥有良好的沟通和协调能力，善于应变，能够快速适应新环境，熟悉使用办公软件，对文件管理十分熟悉。',
           },
           btns: [
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "相关技能",
+          name: '相关技能',
           arr: [
             {
               content:
-                "填写技能最好和求职岗位的相关性较高，主要包含专业技能、专业课程。如果实在技能较少可以写办公软件方面的技能并说明掌握程度。",
+                '填写技能最好和求职岗位的相关性较高，主要包含专业技能、专业课程。如果实在技能较少可以写办公软件方面的技能并说明掌握程度。',
             },
           ],
           default: {
             content:
-              "填写技能最好和求职岗位的相关性较高，主要包含专业技能、专业课程。如果实在技能较少可以写办公软件方面的技能并说明掌握程度。",
+              '填写技能最好和求职岗位的相关性较高，主要包含专业技能、专业课程。如果实在技能较少可以写办公软件方面的技能并说明掌握程度。',
           },
           btns: [
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
         },
         {
-          name: "荣誉证书",
+          name: '荣誉证书',
           arr: [
             {
               content:
-                "详细描述你所获得的奖励证书，于求职岗位相关性强的写在前面，只需要填写有代表性的奖项，如果有更高级别的证书，则不建议再添加基础的证书。例：全国机器人大赛一等奖。",
+                '详细描述你所获得的奖励证书，于求职岗位相关性强的写在前面，只需要填写有代表性的奖项，如果有更高级别的证书，则不建议再添加基础的证书。例：全国机器人大赛一等奖。',
             },
           ],
           default: {
             content:
-              "详细描述你所获得的奖励证书，于求职岗位相关性强的写在前面，只需要填写有代表性的奖项，如果有更高级别的证书，则不建议再添加基础的证书。例：全国机器人大赛一等奖。",
+              '详细描述你所获得的奖励证书，于求职岗位相关性强的写在前面，只需要填写有代表性的奖项，如果有更高级别的证书，则不建议再添加基础的证书。例：全国机器人大赛一等奖。',
           },
           btns: [
             {
-              name: "el-icon-arrow-down",
+              name: 'el-icon-arrow-down',
               function: this.itemDown,
             },
             {
-              name: "el-icon-arrow-up",
+              name: 'el-icon-arrow-up',
               function: this.itemUp,
             },
           ],
@@ -354,67 +354,67 @@ var vm = new Vue({
       //todo 右侧工具栏中模块显示
       showModule: [
         {
-          name: "求职意向",
-          logo: "el-icon-position",
-          content: "职位要求信息",
+          name: '求职意向',
+          logo: 'el-icon-position',
+          content: '职位要求信息',
           children: [],
         },
         {
-          name: "项目经历",
-          logo: "el-icon-notebook-2",
-          content: "展示专业领域的项目与能力",
+          name: '项目经历',
+          logo: 'el-icon-notebook-2',
+          content: '展示专业领域的项目与能力',
           children: [],
         },
         {
-          name: "自我评价",
-          logo: "el-icon-mic",
-          content: "突出个人求职优势",
+          name: '自我评价',
+          logo: 'el-icon-mic',
+          content: '突出个人求职优势',
           children: [],
         },
         {
-          name: "工作经历",
-          logo: "el-icon-suitcase",
-          content: "展示工作经历，突出相关能力",
+          name: '工作经历',
+          logo: 'el-icon-suitcase',
+          content: '展示工作经历，突出相关能力',
           children: [],
         },
         {
-          name: "在校经历",
-          logo: "el-icon-office-building",
-          content: "描述学历背景及专业信息",
+          name: '在校经历',
+          logo: 'el-icon-office-building',
+          content: '描述学历背景及专业信息',
           children: [],
         },
       ],
       hideModule: [
         {
-          name: "教育经历",
-          logo: "el-icon-date",
-          content: "展示人际交往与团队合作能力",
+          name: '教育经历',
+          logo: 'el-icon-date',
+          content: '展示人际交往与团队合作能力',
           children: [],
         },
         {
-          name: "实习经历",
-          logo: "el-icon-data-analysis",
-          content: "突出相关经验，展示自身能力",
+          name: '实习经历',
+          logo: 'el-icon-data-analysis',
+          content: '突出相关经验，展示自身能力',
           children: [],
         },
         {
-          name: "相关技能",
-          logo: "el-icon-setting",
-          content: "列举自己强项与掌握的技能",
+          name: '相关技能',
+          logo: 'el-icon-setting',
+          content: '列举自己强项与掌握的技能',
           children: [],
         },
         {
-          name: "荣誉证书",
-          logo: "el-icon-trophy",
-          content: "列出自己掌握的技能与强项",
+          name: '荣誉证书',
+          logo: 'el-icon-trophy',
+          content: '列出自己掌握的技能与强项',
           children: [],
         },
       ],
       // 下载模态框
       downloadDialogFormVisible: false,
       downloadForm: {
-        type: "pdf",
-        downName: "个人简历",
+        type: 'pdf',
+        downName: '个人简历',
       },
       // 照片显示
       imgShow: true,
@@ -469,8 +469,8 @@ var vm = new Vue({
     },
     // 计算输入框长度
     text(value) {
-      if (value == "" || value == 0) {
-        return "1em";
+      if (value == '' || value == 0) {
+        return '1em';
       } else {
         var px = 0;
         var em = 0;
@@ -479,7 +479,7 @@ var vm = new Vue({
           if (/[a-zA-Z0-9]/.test(element)) px++;
           else em++;
         }
-        return "calc(9*" + px + "px + " + em + "em)";
+        return 'calc(9*' + px + 'px + ' + em + 'em)';
       }
     },
     // 文字选中
@@ -530,7 +530,7 @@ var vm = new Vue({
         if (item.content.trim().length > 0) {
           this.personalArr.push(item);
         }
-        if (item.name !== "头像") {
+        if (item.name !== '头像') {
           this.personalDefaultArr.push({
             name: item.name,
             content: item.name,
@@ -548,16 +548,16 @@ var vm = new Vue({
       if (items.length <= 1) {
         return false;
       }
-      this.$confirm("此操作将删除该字段, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "error",
+      this.$confirm('此操作将删除该字段, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'error',
       })
         .then(() => {
           items.splice(items.indexOf(item), 1);
         })
         .catch(() => {
-          console.log("删除取消");
+          console.log('删除取消');
         });
     },
     // 修改基本信息字段
@@ -589,11 +589,11 @@ var vm = new Vue({
     },
     // 头像上传
     userload() {
-      var img = document.querySelector("#user-img");
-      var input = document.querySelector("#user");
+      var img = document.querySelector('#user-img');
+      var input = document.querySelector('#user');
       var file = input.files[0];
-      if (file == undefined || file.type.indexOf("image") === -1) {
-        this.$message.error("请选择图片上传");
+      if (file == undefined || file.type.indexOf('image') === -1) {
+        this.$message.error('请选择图片上传');
         return false;
       }
       const fileReader = new FileReader();
@@ -603,7 +603,7 @@ var vm = new Vue({
       // readAsDataURL
       fileReader.readAsDataURL(file);
       fileReader.onerror = () => {
-        this.$message.error("图片上传失败");
+        this.$message.error('图片上传失败');
       };
     },
     // 下载简历
@@ -611,13 +611,13 @@ var vm = new Vue({
       this.downloadDialogFormVisible = true;
     },
     download() {
-      var shareContent = document.querySelector("#app .mainBox .main"); //需要截图的包裹的（原生的）DOM 对象
+      var shareContent = document.querySelector('#app .mainBox .main'); //需要截图的包裹的（原生的）DOM 对象
       // var shareContent = document.querySelector('.tools'); //需要截图的包裹的（原生的）DOM 对象
 
       // base64转blob
       function base64ToBlob({
-        b64data = "",
-        contentType = "",
+        b64data = '',
+        contentType = '',
         sliceSize = 512,
       } = {}) {
         return new Promise((resolve, reject) => {
@@ -660,7 +660,7 @@ var vm = new Vue({
         useCORS: true, // 【重要】开启跨域配置
       };
       html2canvas(shareContent, opts).then((canvas) => {
-        if (this.downloadForm.type === "pdf") {
+        if (this.downloadForm.type === 'pdf') {
           // 生成pdf
           var contentWidth = canvas.width;
           var contentHeight = canvas.height;
@@ -673,15 +673,15 @@ var vm = new Vue({
           //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
           var imgWidth = 595.28;
           var imgHeight = (592.28 / contentWidth) * contentHeight;
-          var pageData = canvas.toDataURL("image/jpeg", 1.0);
-          var pdf = new jsPDF("", "pt", "a4");
+          var pageData = canvas.toDataURL('image/jpeg', 1.0);
+          var pdf = new jsPDF('', 'pt', 'a4');
           //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
           //当内容未超过pdf一页显示的范围，无需分页
           if (leftHeight < pageHeight) {
-            pdf.addImage(pageData, "JPEG", 0, 0, imgWidth, imgHeight);
+            pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
           } else {
             while (leftHeight > 0) {
-              pdf.addImage(pageData, "JPEG", 0, position, imgWidth, imgHeight);
+              pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight);
               leftHeight -= pageHeight;
               position -= 841.89;
               //避免添加空白页
@@ -690,13 +690,13 @@ var vm = new Vue({
               }
             }
           }
-          pdf.save(this.downloadForm.downName + ".pdf");
+          pdf.save(this.downloadForm.downName + '.pdf');
         } else {
-          let base64 = canvas.toDataURL().split(",")[1];
-          base64ToBlob({ b64data: base64, contentType: "image/png" }).then(
+          let base64 = canvas.toDataURL().split(',')[1];
+          base64ToBlob({ b64data: base64, contentType: 'image/png' }).then(
             (res) => {
               // a标签设置donwload属性
-              let a = document.createElement("a");
+              let a = document.createElement('a');
               a.href = res.preview;
               a.download = this.downloadForm.downName;
               a.click();
