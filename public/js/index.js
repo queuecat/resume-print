@@ -423,9 +423,26 @@ var vm = new Vue({
     };
   },
   methods: {
+    // 刷新预览模版（实时渲染大小
+    renderTemplate() {
+      let templateBox = document.querySelector('#template');
+      let main = document.querySelector('.main');
+      let w = main.offsetWidth;
+      let h = main.offsetHeight;
+      templateBox.style.width = w * 0.3 + 'px';
+      templateBox.style.height = h * 0.3 + 'px';
+    },
     // css切换按钮
     showChangeTemplateDialog() {
       this.changeTemplateDialogVisible = true;
+      // todo 预览模版初始化（创建现有快照，注入到预览模版中）
+      let templateBox = document.querySelector('#template');
+      let t = document.querySelector('.main').cloneNode(true);
+      // 注入使用删除，添加方案
+      templateBox.innerHTML = '';
+      templateBox.appendChild(t);
+      // 初始化预览模版
+      this.renderTemplate();
     },
     // 切换css模块
     changeCssModule(path) {},
@@ -479,7 +496,6 @@ var vm = new Vue({
 
         context.font = '16px sans-serif';
         let metrics = context.measureText(value);
-        console.log(metrics.width);
         return metrics.width + 'px';
       }
     },

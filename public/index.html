@@ -16,12 +16,12 @@
     <script>
       // 检测当前页面宽度，若为移动端，则转到移动端受限页面中
       if (window.innerWidth < 1130) {
-        location.href = "/minScreen.html";
+        location.href = '/minScreen.html';
       }
       window.onresize = function () {
         console.log(window.innerWidth);
         if (window.innerWidth < 1130) {
-          location.href = "/minScreen.html";
+          location.href = '/minScreen.html';
         }
       };
     </script>
@@ -415,10 +415,22 @@
       <!-- 切换模版模态框 -->
       <el-dialog
         width="40%"
-        title="切换简历模版"
         :visible.sync="changeTemplateDialogVisible"
-        class="personalDialog"
+        class="personalDialog templateDialog"
       >
+        <!-- 模版预览 -->
+        <div slot="title">
+          <h3>切换简历模版</h3>
+          <div class="templateViewBox">
+            <div class="templateView" id="template"></div>
+          </div>
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="changeTemplateDialogVisible = false"
+            >取 消</el-button
+          >
+          <el-button type="primary" @click="">保存</el-button>
+        </div>
       </el-dialog>
     </div>
     <!-- index.js -->

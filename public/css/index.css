@@ -44,7 +44,7 @@ li {
   margin: 0 auto;
 }
 .main::after {
-  content: "";
+  content: '';
   background-color: rgb(47, 85, 150);
   height: 10px;
   width: 820px;
@@ -113,7 +113,7 @@ p {
   cursor: pointer;
 }
 .tools .show li:hover .btn i::before {
-  content: "\e7a2";
+  content: '\e7a2';
   color: rgb(255, 88, 88);
 }
 .tools ul li .btn input {
@@ -123,7 +123,7 @@ p {
   height: 12px;
   vertical-align: middle;
 }
-.tools ul li .btn input[type="checkbox"] {
+.tools ul li .btn input[type='checkbox'] {
   color: red;
 }
 .tools ul li .btn label {
@@ -140,7 +140,7 @@ p {
   cursor: pointer;
 }
 .tools .hide li:hover .btn i::before {
-  content: "\e7a0";
+  content: '\e7a0';
   color: rgb(63, 200, 87);
 }
 .saveBtnBox {
@@ -434,4 +434,22 @@ p {
 .personalDialog .el-dialog .el-collapse-item__content {
   overflow: hidden;
   padding-bottom: 0;
+}
+/* 模版替换 */
+.templateDialog .templateViewBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.templateDialog .templateView {
+  width: calc(100% * 0.3);
+}
+/* 预览图 */
+.templateDialog .main {
+  transform-origin: 0 0;
+  transform: scale(0.3);
+}
+.templateDialog .el-dialog__body {
+  padding: 0;
 }
