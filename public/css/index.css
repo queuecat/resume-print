@@ -444,6 +444,16 @@ p {
 }
 .templateDialog .templateView {
   width: calc(100% * 0.3);
+  position: relative;
+}
+/* 屏蔽预览中的CSS hover */
+.templateDialog .cover {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 /* 预览图 */
 .templateDialog .main {

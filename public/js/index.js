@@ -439,7 +439,7 @@ var vm = new Vue({
       let templateBox = document.querySelector('#template');
       let t = document.querySelector('.main').cloneNode(true);
       // 注入使用删除，添加方案
-      templateBox.innerHTML = '';
+      templateBox.innerHTML = '<div class="cover"></div>';
       templateBox.appendChild(t);
       // 初始化预览模版
       this.renderTemplate();
