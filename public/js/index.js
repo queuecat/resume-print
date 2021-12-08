@@ -472,14 +472,15 @@ var vm = new Vue({
       if (value == '' || value == 0) {
         return '1em';
       } else {
-        var px = 0;
-        var em = 0;
-        for (let index = 0; index < String(value).length; index++) {
-          var element = String(value)[index];
-          if (/[a-zA-Z0-9]/.test(element)) px++;
-          else em++;
-        }
-        return 'calc(9*' + px + 'px + ' + em + 'em)';
+        let canvas =
+            String.prototype.canvas ||
+            (String.prototype.canvas = document.createElement('canvas')),
+          context = canvas.getContext('2d');
+
+        context.font = '16px sans-serif';
+        let metrics = context.measureText(value);
+        console.log(metrics.width);
+        return metrics.width + 'px';
       }
     },
     // 文字选中
