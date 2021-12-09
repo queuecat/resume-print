@@ -438,7 +438,7 @@ var vm = new Vue({
       // todo 预览模版初始化（创建现有快照，注入到预览模版中）
       let templateBox = document.querySelector('#template');
       let t = document.querySelector('.main').cloneNode(true);
-      // 注入使用删除，添加方案
+      // 注入使用删除，添加方案（并且设置遮罩层，阻止CSS的hover触发）
       templateBox.innerHTML = '<div class="cover"></div>';
       templateBox.appendChild(t);
       // 初始化预览模版
