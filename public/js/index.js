@@ -1,4 +1,14 @@
-var vm = new Vue({
+const positionCss = [
+  {
+    name: '',
+    path: '/css/index.css',
+  },
+  {
+    name: '',
+    path: '/css/index2.css',
+  },
+];
+const vm = new Vue({
   el: '#app',
   data() {
     return {
@@ -427,10 +437,13 @@ var vm = new Vue({
     renderTemplate() {
       let templateBox = document.querySelector('#template');
       let main = document.querySelector('.main');
-      let w = main.offsetWidth;
-      let h = main.offsetHeight;
-      templateBox.style.width = w * 0.3 + 'px';
-      templateBox.style.height = h * 0.3 + 'px';
+      let w = main.offsetWidth * 0.3 + 'px';
+      let h = main.offsetHeight * 0.3 + 'px';
+      templateBox.style.width = w;
+      templateBox.style.height = h;
+      // 我吐了，还得给父元素也设置高度，不然左右两边的选择器没有高度
+      let box = document.querySelector('.templateViewBox');
+      box.style.height = h;
     },
     // css切换按钮
     showChangeTemplateDialog() {

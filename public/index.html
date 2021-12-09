@@ -422,11 +422,27 @@
         <div slot="title">
           <h3>切换简历模版</h3>
           <div class="templateViewBox">
-            <!-- 左侧为布局模版筛选 -->
-
+            <!-- todo 左侧为布局模版筛选 -->
+            <div class="templatePicker">
+              <el-carousel
+                type="card"
+                direction="vertical"
+                :autoplay="false"
+                indicator-position="none"
+              >
+                <el-carousel-item v-for="item in 5" :key="item">
+                  <img
+                    style="width: 100px; height: 100px"
+                    src="/images/user.png"
+                    alt=""
+                  />
+                </el-carousel-item>
+              </el-carousel>
+            </div>
             <!-- 中间预览层 -->
             <div class="templateView" id="template"></div>
-            <!-- 右侧是主题颜色筛选 -->
+            <!-- todo 右侧是主题颜色筛选 -->
+            <div class="colorPicker"></div>
           </div>
         </div>
         <div slot="footer" class="dialog-footer">

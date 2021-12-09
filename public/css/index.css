@@ -463,3 +463,26 @@ p {
 .templateDialog .el-dialog__body {
   padding: 0;
 }
+/* 模版布局选择 */
+.templateDialog .templatePicker {
+  flex: 1;
+  height: 100%;
+}
+.templatePicker .el-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.templatePicker .el-carousel__container {
+  width: 100px;
+}
+.templatePicker .el-carousel__item {
+  height: 100px;
+  width: auto;
+}
+/* 模版主题颜色选择 */
+.templateDialog .colorPicker {
+  flex: 1;
+  height: 100%;
+}
