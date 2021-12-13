@@ -485,4 +485,24 @@ p {
 .templateDialog .colorPicker {
   flex: 1;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.templateDialog .colorPicker .el-button {
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+.colorPicker {
+}
+.colorPicker .el-color-picker__trigger {
+  border: none;
+}
+.colorPicker .el-color-picker__color {
+  border-radius: 50%;
+}
+.colorPicker .el-color-picker__color-inner {
+  border-radius: 50%;
 }

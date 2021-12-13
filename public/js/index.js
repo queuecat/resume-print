@@ -430,9 +430,23 @@ const vm = new Vue({
       imgShow: true,
       // css切换模态框
       changeTemplateDialogVisible: false,
+      // 颜色选择模版中的颜色
+      Pcolor: '#2f5596',
     };
   },
   methods: {
+    // 更换模版模态框点击保存
+    changeTemplate() {
+      if (!this.Pcolor) {
+        this.$message.error('颜色不能为空');
+        return;
+      }
+      this.changeTemplateDialogVisible = false;
+    },
+    // 点击更换颜色按钮
+    changePickerColor(color) {
+      this.Pcolor = color;
+    },
     // 刷新预览模版（实时渲染大小
     renderTemplate() {
       let templateBox = document.querySelector('#template');

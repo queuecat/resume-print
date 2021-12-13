@@ -420,7 +420,7 @@
       >
         <!-- 模版预览 -->
         <div slot="title">
-          <h3>切换简历模版</h3>
+          <h3>切换简历模版(该功能开发中)</h3>
           <div class="templateViewBox">
             <!-- todo 左侧为布局模版筛选 -->
             <div class="templatePicker">
@@ -430,7 +430,7 @@
                 :autoplay="false"
                 indicator-position="none"
               >
-                <el-carousel-item v-for="item in 5" :key="item">
+                <el-carousel-item v-for="item in 2" :key="item">
                   <img
                     style="width: 100px; height: 100px"
                     src="/images/user.png"
@@ -442,14 +442,45 @@
             <!-- 中间预览层 -->
             <div class="templateView" id="template"></div>
             <!-- todo 右侧是主题颜色筛选 -->
-            <div class="colorPicker"></div>
+            <div class="colorPicker">
+              <el-button
+                @click="changePickerColor('#409eff')"
+                type="primary"
+                circle
+              ></el-button>
+              <el-button
+                @click="changePickerColor('#67c23a')"
+                type="success"
+                circle
+              ></el-button>
+              <el-button
+                @click="changePickerColor('#909399')"
+                type="info"
+                circle
+              ></el-button>
+              <el-button
+                @click="changePickerColor('#e6a23c')"
+                type="warning"
+                circle
+              ></el-button>
+              <el-button
+                @click="changePickerColor('#f56c6c')"
+                type="danger"
+                circle
+              ></el-button>
+              <el-color-picker
+                ref="colorPicker"
+                v-model="Pcolor"
+                size="medium"
+              ></el-color-picker>
+            </div>
           </div>
         </div>
         <div slot="footer" class="dialog-footer">
           <el-button @click="changeTemplateDialogVisible = false"
             >取 消</el-button
           >
-          <el-button type="primary" @click="">保存</el-button>
+          <el-button type="primary" @click="changeTemplate">保存</el-button>
         </div>
       </el-dialog>
     </div>
