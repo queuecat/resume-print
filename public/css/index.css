@@ -20,6 +20,10 @@ body {
   min-height: 100%;
   background-color: rgb(245, 247, 249);
 }
+/* 这里定义CSS变量 */
+body {
+  --temColor: rgb(47, 85, 150);
+}
 li {
   list-style: none;
 }
@@ -45,7 +49,7 @@ li {
 }
 .main::after {
   content: '';
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   height: 10px;
   width: 820px;
   display: block;
@@ -55,7 +59,7 @@ li {
 .header {
   height: 50px;
   margin: 0 40px;
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   border-radius: 10px;
   text-align: center;
   line-height: 50px;
@@ -162,14 +166,14 @@ p {
 }
 .main-list .title {
   margin-bottom: 10px;
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   width: 128px;
   height: 35px;
   color: #fff;
   text-align: center;
   line-height: 35px;
   font-weight: 400;
-  border: 1px rgb(19, 60, 131) solid;
+  border: 1px var(--temColor) solid;
 }
 .main-list .edit-btn {
   width: 25px;
@@ -349,14 +353,14 @@ p {
 }
 .personal-info .title {
   margin-bottom: 10px;
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   width: 128px;
   height: 35px;
   color: #fff;
   text-align: center;
   line-height: 35px;
   font-weight: 400;
-  border: 1px rgb(19, 60, 131) solid;
+  border: 1px var(--temColor) solid;
 }
 .personal-info .items:hover {
   background-color: rgb(246, 250, 251);

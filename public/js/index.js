@@ -442,10 +442,15 @@ const vm = new Vue({
         return;
       }
       this.changeTemplateDialogVisible = false;
+      document.body.style.setProperty('--temColor', this.Pcolor);
     },
     // 点击更换颜色按钮
     changePickerColor(color) {
       this.Pcolor = color;
+
+      let templateBox = document.querySelector('#template');
+      // 颜色系统使用了CSS变量来做API：document.body.style.setProperty('--primary', '#7F583F');
+      templateBox.style.setProperty('--temColor', this.Pcolor);
     },
     // 刷新预览模版（实时渲染大小
     renderTemplate() {
