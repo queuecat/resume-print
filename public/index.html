@@ -430,7 +430,7 @@
                 :autoplay="false"
                 indicator-position="none"
               >
-                <el-carousel-item v-for="item in 2" :key="item">
+                <el-carousel-item v-for="item in 3" :key="item">
                   <img
                     style="width: 100px; height: 100px"
                     src="/images/user.png"
@@ -472,14 +472,13 @@
                 ref="colorPicker"
                 v-model="Pcolor"
                 size="medium"
+                @active-change="changePickerColor"
               ></el-color-picker>
             </div>
           </div>
         </div>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="changeTemplateDialogVisible = false"
-            >取 消</el-button
-          >
+          <el-button @click="cancelTemplate">取 消</el-button>
           <el-button type="primary" @click="changeTemplate">保存</el-button>
         </div>
       </el-dialog>

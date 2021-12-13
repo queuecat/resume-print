@@ -435,6 +435,19 @@ const vm = new Vue({
     };
   },
   methods: {
+    test111(e) {
+      console.log(e);
+    },
+    // 更换模版点击取消
+    cancelTemplate() {
+      this.changeTemplateDialogVisible = false;
+      // 颜色恢复
+      let color = document.body.style.getPropertyValue('--temColor'); // 这里只能拿内嵌CSS的值，写入CSS文件中的拿不出来
+      console.log(color);
+      let templateBox = document.querySelector('#template');
+      templateBox.style.setProperty('--temColor', color);
+      this.Pcolor = color;
+    },
     // 更换模版模态框点击保存
     changeTemplate() {
       if (!this.Pcolor) {
@@ -774,5 +787,7 @@ const vm = new Vue({
     // 生成基本信息数据
     this.personalInfoShow();
     this.workerNeedShow();
+    // 添加内嵌的CSS变量
+    document.body.style.setProperty('--temColor', this.Pcolor);
   },
 });
