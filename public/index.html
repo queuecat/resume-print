@@ -27,6 +27,7 @@
     </script>
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/index2.css" />
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.min.js"></script>
     <!-- 引入element-ui样式 -->
     <link
@@ -37,7 +38,6 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.3/index.min.js"></script>
     <!-- jspdf -->
     <script src="https://cdn.bootcdn.net/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-
     <!-- html2canvas -->
     <script src="./js/html2canvas.js"></script>
     <!-- printGit -->
@@ -425,15 +425,17 @@
             <!-- todo 左侧为布局模版筛选 -->
             <div class="templatePicker">
               <el-carousel
-                type="card"
                 direction="vertical"
                 :autoplay="false"
-                indicator-position="none"
+                indicator-position="outside"
+                trigger="click"
+                @change="clickTemplate"
+                ref="swiper"
               >
-                <el-carousel-item v-for="item in 3" :key="item">
+                <el-carousel-item v-for="item in CSSTemplate" :key="item">
                   <img
-                    style="width: 100px; height: 100px"
-                    src="/images/user.png"
+                    style="width: 120px; height: 180px"
+                    :src="item.img"
                     alt=""
                   />
                 </el-carousel-item>

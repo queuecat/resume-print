@@ -1,34 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-*::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-  background-color: #fff;
-}
-
-*::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  border-radius: 10px;
-}
-
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  background-color: rgb(245, 247, 249);
-}
-li {
-  list-style: none;
-}
-#app {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-}
-
 /* 简历主体 */
 .mainBox {
   flex: 1;
@@ -44,8 +13,8 @@ li {
   margin: 0 auto;
 }
 .main::after {
-  content: "";
-  background-color: rgb(47, 85, 150);
+  content: '';
+  background-color: var(--temColor);
   height: 10px;
   width: 820px;
   display: block;
@@ -55,98 +24,13 @@ li {
 .header {
   height: 50px;
   margin: 0 40px;
-  background-color: rgb(209, 27, 27);
+  background-color: var(--temColor);
   border-radius: 10px;
   text-align: center;
   line-height: 50px;
   font-size: 25px;
   font-weight: 900;
   color: #fff;
-}
-
-/* 侧边工具栏 */
-.main-tools {
-  height: 100%;
-  width: 300px;
-  background-color: #fff;
-}
-.tools {
-  overflow-y: auto;
-  height: 100%;
-  width: 300px;
-  background-color: #fff;
-  position: fixed;
-  right: 0;
-}
-.tools h3,
-p {
-  margin: 10px;
-  color: rgb(36, 47, 68);
-}
-.tools p {
-  font-size: 14px;
-  color: rgb(118, 120, 123);
-}
-.tools ul {
-  margin: 20px;
-  color: #545d6d;
-}
-.tools ul li {
-  background-color: rgb(245, 247, 249);
-  padding: 10px;
-  font-size: 12px;
-  position: relative;
-  margin-bottom: 10px;
-}
-.tools ul li i {
-  color: rgb(139, 151, 175);
-}
-.tools .logo {
-  margin-right: 10px;
-}
-.tools ul li .btn {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  font-size: 15px;
-  cursor: pointer;
-}
-.tools .show li:hover .btn i::before {
-  content: "\e7a2";
-  color: rgb(255, 88, 88);
-}
-.tools ul li .btn input {
-  cursor: pointer;
-  border: 1px;
-  width: 12px;
-  height: 12px;
-  vertical-align: middle;
-}
-.tools ul li .btn input[type="checkbox"] {
-  color: red;
-}
-.tools ul li .btn label {
-  font-size: 12px;
-  user-select: none;
-  cursor: pointer;
-}
-.tools ul li .content {
-  margin: 0;
-  color: rgb(142, 150, 164);
-  padding: 5px 0;
-}
-.tools .hide li {
-  cursor: pointer;
-}
-.tools .hide li:hover .btn i::before {
-  content: "\e7a0";
-  color: rgb(63, 200, 87);
-}
-.saveBtnBox {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
 }
 
 /* 模块设计 */
@@ -162,14 +46,14 @@ p {
 }
 .main-list .title {
   margin-bottom: 10px;
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   width: 128px;
   height: 35px;
   color: #fff;
   text-align: center;
   line-height: 35px;
   font-weight: 400;
-  border: 1px rgb(19, 60, 131) solid;
+  border: 1px var(--temColor) solid;
 }
 .main-list .edit-btn {
   width: 25px;
@@ -349,14 +233,14 @@ p {
 }
 .personal-info .title {
   margin-bottom: 10px;
-  background-color: rgb(47, 85, 150);
+  background-color: var(--temColor);
   width: 128px;
   height: 35px;
   color: #fff;
   text-align: center;
   line-height: 35px;
   font-weight: 400;
-  border: 1px rgb(19, 60, 131) solid;
+  border: 1px var(--temColor) solid;
 }
 .personal-info .items:hover {
   background-color: rgb(246, 250, 251);
@@ -401,34 +285,4 @@ p {
 
 #user {
   display: none;
-}
-/* 基本信息模态框 */
-.personalDialog .el-dialog {
-  min-width: 750px;
-}
-.personalDialog .el-form {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.personalDialog .el-form-item {
-  width: 45%;
-}
-.personalDialog .el-form--inline .el-form-item {
-  margin-right: 0;
-  display: flex;
-  float: left;
-  justify-content: flex-end;
-}
-.personalDialog .el-collapse {
-  width: 100%;
-}
-/* 选填信息 */
-.personalDialog .el-dialog .el-collapse-item__content {
-  overflow: hidden;
-  padding-bottom: 0;
-}
-/* 模态框body */
-body {
-  padding-right: 0px !important;
 }

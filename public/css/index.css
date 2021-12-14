@@ -479,10 +479,11 @@ p {
   height: 100%;
 }
 .templatePicker .el-carousel__container {
-  width: 100px;
+  width: 130px;
+  height: 180px;
 }
 .templatePicker .el-carousel__item {
-  height: 100px;
+  height: auto;
   width: auto;
 }
 /* 模版主题颜色选择 */
@@ -498,8 +499,6 @@ p {
 .templateDialog .colorPicker .el-button {
   margin-left: 0;
   margin-bottom: 10px;
-}
-.colorPicker {
 }
 .colorPicker .el-color-picker__trigger {
   border: none;

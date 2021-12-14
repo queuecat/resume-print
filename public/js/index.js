@@ -1,13 +1,3 @@
-const positionCss = [
-  {
-    name: '',
-    path: '/css/index.css',
-  },
-  {
-    name: '',
-    path: '/css/index2.css',
-  },
-];
 const vm = new Vue({
   el: '#app',
   data() {
@@ -432,11 +422,99 @@ const vm = new Vue({
       changeTemplateDialogVisible: false,
       // 颜色选择模版中的颜色
       Pcolor: '#2f5596',
+      // 布局CSS数组
+      CSSTemplate: [
+        {
+          img: '/images/template/0.png',
+          path: '/css/index.css',
+        },
+        {
+          img: '/images/template/1.png',
+          path: '/css/index.css',
+        },
+        {
+          img: '/images/template/2.png',
+          path: '/css/index2.css',
+        },
+        {
+          img: '/images/template/3.png',
+          path: '/css/index.css',
+        },
+        {
+          img: '/images/template/4.png',
+          path: '/css/index2.css',
+        },
+      ],
+      // 记录当前主页面使用的css index
+      CSSindex: 0,
+      // 模版的css index
+      templateCSSIndex: 0,
+      style: null,
+      temStyle: null,
     };
   },
   methods: {
-    test111(e) {
-      console.log(e);
+    // 替换全局css style方法
+    changeStyle() {
+      let css = this.CSSTemplate[this.CSSindex].cssText;
+
+      if (this.style) {
+        this.style.innerHTML = css;
+      } else {
+        let style = document.createElement('style');
+        style.innerHTML = css;
+        // 切换模版
+        document.body.appendChild(style);
+        this.style = style;
+      }
+    },
+    // 替换预览容器style方法
+    changeTemStyle(index) {
+      let templateBox = document.querySelector('#template');
+
+      // 可以取到css文件中定义的样式，但直接注入会应用到全局，只能使用正则匹配后，添加类名
+      let cssTem = this.cssReg(this.CSSTemplate[index].cssText);
+      // 注入，每次生成style标签很繁琐，可以使用一个style标签，每次更新都会替换
+      if (this.temStyle) {
+        this.temStyle.innerHTML = cssTem;
+      } else {
+        let style = document.createElement('style');
+        style.innerHTML = cssTem;
+        // 切换模版
+        templateBox.appendChild(style);
+        this.temStyle = style;
+      }
+    },
+    // 使用正则来封闭css样式
+    cssReg(str) {
+      let reg = /(.*{{1}[\s\S]*?}{1})/g;
+
+      let cssArr = str.match(reg);
+      for (const index in cssArr) {
+        cssArr[index] = '#template ' + cssArr[index];
+      }
+      return cssArr.join('\n');
+    },
+    // 点击布局模版
+    clickTemplate(index) {
+      // 当走马灯切换后，展示对应的CSS
+      let css = this.CSSTemplate[index].path;
+      // 预览模版切换
+      this.templateCSSIndex = index;
+      // 注入CSS
+      // 请求的方式不会生成换成，这里手动缓存一下
+      if (this.CSSTemplate[index].cssText) {
+        this.changeTemStyle(index);
+      } else {
+        fetch(css)
+          .then((res) => res.text())
+          .then((cssText) => {
+            // 缓存起来返回值
+            this.CSSTemplate[index].cssText = cssText;
+            // 注入
+            this.changeTemStyle(index);
+          });
+      }
     },
     // 更换模版点击取消
     cancelTemplate() {
@@ -447,6 +525,11 @@ const vm = new Vue({
       let templateBox = document.querySelector('#template');
       templateBox.style.setProperty('--temColor', color);
       this.Pcolor = color;
+      // 将走马灯归位，并且将预览CSS index归位
+      this.templateCSSIndex = this.CSSindex;
+      this.$refs.swiper.setActiveItem(this.CSSindex);
+      // style标签恢复
+      this.temStyle = null;
     },
     // 更换模版模态框点击保存
     changeTemplate() {
@@ -456,6 +539,11 @@ const vm = new Vue({
       }
       this.changeTemplateDialogVisible = false;
       document.body.style.setProperty('--temColor', this.Pcolor);
+      // 将全局CSS index切换
+      this.CSSindex = this.templateCSSIndex;
+      // 更换全局CSS
+      this.changeStyle();
+      this.temStyle = null;
     },
     // 点击更换颜色按钮
     changePickerColor(color) {
