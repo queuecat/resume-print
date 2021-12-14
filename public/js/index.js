@@ -431,6 +431,7 @@ const vm = new Vue({
         {
           img: '/images/template/1.png',
           path: '/css/index.css',
+          color: 'rgb(25,74,119)',
         },
         {
           img: '/images/template/2.png',
@@ -456,6 +457,10 @@ const vm = new Vue({
   methods: {
     // 替换全局css style方法
     changeStyle() {
+      if (this.CSSindex === 0) {
+        this.style.innerHTML = '';
+        return;
+      }
       let css = this.CSSTemplate[this.CSSindex].cssText;
 
       if (this.style) {
@@ -514,6 +519,10 @@ const vm = new Vue({
             // 注入
             this.changeTemStyle(index);
           });
+      }
+      // 模版颜色切换
+      if (this.CSSTemplate[index].color) {
+        this.Pcolor = this.CSSTemplate[index].color;
       }
     },
     // 更换模版点击取消

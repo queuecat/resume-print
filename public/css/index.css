@@ -58,6 +58,7 @@ li {
 }
 .header {
   height: 50px;
+  width: auto;
   margin: 0 40px;
   background-color: var(--temColor);
   border-radius: 10px;
@@ -163,6 +164,9 @@ p {
 .main-list:hover {
   background-color: rgb(246, 250, 251);
   border: 1px rgb(198, 211, 228) dashed;
+}
+.main-list .titleBox {
+  background-color: transparent;
 }
 .main-list .title {
   margin-bottom: 10px;
@@ -361,6 +365,7 @@ p {
   line-height: 35px;
   font-weight: 400;
   border: 1px var(--temColor) solid;
+  display: block;
 }
 .personal-info .items:hover {
   background-color: rgb(246, 250, 251);
