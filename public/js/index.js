@@ -4,7 +4,7 @@ const vm = new Vue({
     return {
       //todo 基本信息
       personalInfo: {
-        logo: 'el-icon-user-solid',
+        logo: 'el-icon-s-custom',
         default: [
           {
             name: '姓名',
@@ -72,7 +72,7 @@ const vm = new Vue({
       personalImgShow: true,
       //todo 求职意向
       workerNeed: {
-        logo: 'el-icon-s-custom',
+        logo: 'el-icon-position',
         default: [
           {
             name: '求职岗位',
@@ -111,6 +111,7 @@ const vm = new Vue({
       // 其他模块
       otherModule: [
         {
+          logo: 'el-icon-date',
           name: '教育经历',
           arr: [
             {
@@ -146,6 +147,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-suitcase',
           name: '工作经历',
           arr: [
             {
@@ -182,6 +184,8 @@ const vm = new Vue({
         },
 
         {
+          logo: 'el-icon-notebook-2',
+
           name: '项目经历',
           arr: [
             {
@@ -215,6 +219,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-office-building',
           name: '在校经历',
           arr: [
             {
@@ -248,6 +253,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-data-analysis',
           name: '实习经历',
           arr: [
             {
@@ -282,6 +288,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-mic',
           name: '自我评价',
           arr: [
             {
@@ -305,6 +312,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-setting',
           name: '相关技能',
           arr: [
             {
@@ -328,6 +336,7 @@ const vm = new Vue({
           ],
         },
         {
+          logo: 'el-icon-trophy',
           name: '荣誉证书',
           arr: [
             {
