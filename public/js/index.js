@@ -467,7 +467,7 @@ const vm = new Vue({
 	methods: {
 		// 替换全局css style方法
 		changeStyle() {
-			if (this.CSSindex === 0) {
+      if (this.CSSindex === 0 && this.style) {
 				this.style.innerHTML = '';
 				return;
 			}
