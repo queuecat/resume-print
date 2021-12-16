@@ -436,11 +436,15 @@ const vm = new Vue({
 			CSSTemplate: [
 				{
 					color: '#2f5596',
-					img: isDev ? '/images/template/0.png' : '/demos/resumePrint/images/template/',
+					img: isDev
+						? '/images/template/0.png'
+						: '/demos/resumePrint/images/template/0.png',
 					path: isDev ? '/css/index.css' : '/demos/resumePrint/css/index.css',
 				},
 				{
-					img: isDev ? '/images/template/1.png' : '/demos/resumePrint/images/template/',
+					img: isDev
+						? '/images/template/1.png'
+						: '/demos/resumePrint/images/template/1.png',
 					path: isDev ? '/css/index2.css' : '/demos/resumePrint/css/index2.css',
 					color: 'rgb(25,74,119)',
 				},
@@ -544,7 +548,6 @@ const vm = new Vue({
 			this.changeTemplateDialogVisible = false;
 			// 颜色恢复
 			let color = document.body.style.getPropertyValue('--temColor'); // 这里只能拿内嵌CSS的值，写入CSS文件中的拿不出来
-			console.log(color);
 			let templateBox = document.querySelector('#template');
 			templateBox.style.setProperty('--temColor', color);
 			this.Pcolor = color;
@@ -942,7 +945,6 @@ const vm = new Vue({
 	computed: {
 		// 基本信息展示数据来源确定
 		personalDataForWhere() {
-			console.log(this.personalArr.length ? "personalDefaultArr" : "personalArr");
 			return this.personalArr.length === 0
 				? this.personalDefaultArr
 				: this.personalArr;
