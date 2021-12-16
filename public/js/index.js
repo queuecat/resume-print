@@ -1,3 +1,4 @@
+const isDev = true;
 const vm = new Vue({
 	el: '#app',
 	data() {
@@ -62,9 +63,9 @@ const vm = new Vue({
 					},
 				],
 			},
-			// 表单信息
+			// 个人信息中模态框输入的表单信息
 			personalArr: [],
-			// 默认信息
+			// 个人信息默认信息
 			personalDefaultArr: [],
 			// 基本信息模态框
 			personalDialogFormVisible: false,
@@ -435,12 +436,12 @@ const vm = new Vue({
 			CSSTemplate: [
 				{
 					color: '#2f5596',
-					img: '/images/template/0.png',
-					path: '/css/index.css',
+					img: isDev ? '/images/template/0.png' : '/demos/resumePrint/images/template/',
+					path: isDev ? '/css/index.css' : '/demos/resumePrint/css/index.css',
 				},
 				{
-					img: '/images/template/1.png',
-					path: '/css/index2.css',
+					img: isDev ? '/images/template/1.png' : '/demos/resumePrint/images/template/',
+					path: isDev ? '/css/index2.css' : '/demos/resumePrint/css/index2.css',
 					color: 'rgb(25,74,119)',
 				},
 				// {
@@ -601,7 +602,7 @@ const vm = new Vue({
 		},
 		// 切换css模块
 		changeCssModule(path) {},
-		// 向上按钮
+		// 向上按钮(只有其他模块支持移动，方法就是修改他在otherModule数组中的位置)
 		itemUp(obj) {
 			let index = this.otherModule.indexOf(obj);
 			if (index <= 0) {
@@ -616,7 +617,7 @@ const vm = new Vue({
 				}
 			}
 		},
-		// 向下按钮
+		// 向下按钮(只有其他模块支持移动，方法就是修改他在otherModule数组中的位置)
 		itemDown(obj) {
 			let index = this.otherModule.indexOf(obj);
 			if (index >= this.otherModule.length - 1) {
@@ -694,13 +695,19 @@ const vm = new Vue({
 			this.hideModule.unshift(item);
 			this.showModule.splice(this.showModule.indexOf(item), 1);
 		},
-		// 生成基本信息展示数据
-		personalInfoShow() {
+		// 生成基本信息模块中展示数据（将personalInfo中基本信息，放入personalDefaultArr中，可选信息放到personalArr中）
+		personalInfoShow(flag = false) {
+			// personalArr起修改展示作用，personalInfo中内容被修改后，会被加入personalArr中
 			this.personalArr = [];
 			this.personalDefaultArr = [];
+			// 修改均修改personalInfo中数据
 			for (item of this.personalInfo.default) {
+				// 证明从删除中调用,且是最后一个
+				if (flag) {
+					item.content = "";
+				}
 				if (item.content.trim().length > 0) {
-					this.personalArr.push(item);
+					this.personalArr.push(Object.assign(item, { default: true }));
 				}
 				if (item.name !== '头像') {
 					this.personalDefaultArr.push({
@@ -710,16 +717,17 @@ const vm = new Vue({
 				}
 			}
 			for (item of this.personalInfo.optional) {
+				// 证明从删除中调用,且是最后一个
+				if (flag) {
+					item.content = "";
+				}
 				if (item.content.trim().length > 0) {
 					this.personalArr.push(item);
 				}
 			}
 		},
 		// 基本信息字段删除
-		deletepersonalInfoItem(items, item) {
-			if (items.length <= 1) {
-				return false;
-			}
+		deletepersonalInfoItem(items, item, isWhere) {
 			this.$confirm('此操作将删除该字段, 是否继续?', '提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -727,6 +735,45 @@ const vm = new Vue({
 			})
 				.then(() => {
 					items.splice(items.indexOf(item), 1);
+					// 删除的时候，要将content清空，否则展示会出问题
+					if (isWhere === 'personal') {
+						if (item.default) {
+							for (item2 of this.personalInfo.default) {
+								if (item2.name === item.name) {
+									item2.content = "";
+								}
+							}
+						} else {
+							for (item2 of this.personalInfo.optional) {
+								if (item2.name === item.name) {
+									item2.content = "";
+								}
+							}
+						}
+					} else if (isWhere === 'workerNeed') {
+						if (item.default) {
+							for (item2 of this.workerNeed.default) {
+								if (item2.name === item.name) {
+									item2.content = "";
+								}
+							}
+						} else {
+							for (item2 of this.workerNeed.optional) {
+								if (item2.name === item.name) {
+									item2.content = "";
+								}
+							}
+						}
+					}
+
+					// 当全部删除后，重置表单
+					if (items.length <= 0) {
+						if (isWhere === 'personal') {
+							this.personalInfoShow(true);
+						} else if (isWhere === 'workerNeed') {
+							this.workerNeedShow(true);
+						}
+					}
 				})
 				.catch(() => {
 					console.log('删除取消');
@@ -738,13 +785,21 @@ const vm = new Vue({
 			this.imgShow = this.personalImgShow;
 			this.personalDialogFormVisible = false;
 		},
+		// 修改求职意向
+		editWorkerNeed() {
+			this.workerNeedShow();
+		},
 		// 生成求职意向展示数据
-		workerNeedShow() {
+		workerNeedShow(flag = false) {
 			this.workerNeedArr = [];
 			this.workerNeedDefaultArr = [];
 			for (let item of this.workerNeed.default) {
+				// 证明从删除中调用,且是最后一个
+				if (flag) {
+					item.content = "";
+				}
 				if (item.content.trim().length > 0) {
-					this.workerNeedArr.push(item);
+					this.workerNeedArr.push(Object.assign(item, { default: true }));
 				}
 
 				this.workerNeedDefaultArr.push({
@@ -753,6 +808,10 @@ const vm = new Vue({
 				});
 			}
 			for (let item of this.workerNeed.optional) {
+				// 证明从删除中调用,且是最后一个
+				if (flag) {
+					item.content = "";
+				}
 				if (item.content.trim().length > 0) {
 					this.workerNeedArr.push(item);
 				}
@@ -883,6 +942,7 @@ const vm = new Vue({
 	computed: {
 		// 基本信息展示数据来源确定
 		personalDataForWhere() {
+			console.log(this.personalArr.length ? "personalDefaultArr" : "personalArr");
 			return this.personalArr.length === 0
 				? this.personalDefaultArr
 				: this.personalArr;
