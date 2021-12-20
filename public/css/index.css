@@ -258,6 +258,7 @@ p {
 }
 .items.textBox {
   margin-bottom: 5px;
+  position: relative;
 }
 .items.textBox:hover {
   background-color: rgb(216, 229, 251);
@@ -342,6 +343,17 @@ p {
 }
 .items.textBox .textarea:hover {
   background-color: rgb(205, 212, 226);
+}
+/* 其他模块删除按钮 */
+.textBox .btn {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  color: rgb(255, 88, 88);
+}
+.textBox:hover .btn {
+  display: inline-block;
 }
 /* 个人信息 */
 .personal-info {

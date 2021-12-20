@@ -466,6 +466,22 @@ const vm = new Vue({
 		};
 	},
 	methods: {
+		// 删除其他模块
+		deleteOtherModal(items, index) {
+			console.log(items, index);
+			this.$confirm('此操作将删除该字段, 是否继续?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'error',
+			})
+				.then(() => {
+					console.log(items.splice(index, 1));
+					console.log("奇了怪了", index);
+				})
+				.catch(() => {
+					console.log('删除取消');
+				});
+		},
 		// 替换全局css style方法
 		changeStyle() {
       if (this.CSSindex === 0 && this.style) {
@@ -634,7 +650,7 @@ const vm = new Vue({
 		},
 		// 新增模块内容
 		addOtherMudle(obj) {
-			obj.arr.push(obj.default);
+			obj.arr.push(JSON.parse(JSON.stringify(obj.default)));
 		},
 		// 动态改变长度
 		changeWidth(text, e) {
