@@ -436,17 +436,17 @@ const vm = new Vue({
 			CSSTemplate: [
 				{
 					color: '#2f5596',
-					img: isDev ? '/images/template/0.png' : '/demos/resumePrint/images/template/',
+					img: isDev ? '/images/template/0.png' : '/demos/resumePrint/images/template/0.png',
 					path: isDev ? '/css/index.css' : '/demos/resumePrint/css/index.css',
 				},
 				{
-					img: isDev ? '/images/template/1.png' : '/demos/resumePrint/images/template/',
+					img: isDev ? '/images/template/1.png' : '/demos/resumePrint/images/template/1.png',
 					path: isDev ? '/css/index2.css' : '/demos/resumePrint/css/index2.css',
 					color: 'rgb(25,74,119)',
 				},
 				{
-					img: '/images/template/3.png',
-					path: '/css/index3.css',
+					img: isDev ? '/images/template/3.png' : '/demos/resumePrint/images/template/3.png',
+					path: isDev ? '/css/index3.css' : '/demos/resumePrint/css/index3.css',
 				},
 				// {
 				//   img: '/images/template/3.png',
