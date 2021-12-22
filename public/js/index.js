@@ -444,10 +444,10 @@ const vm = new Vue({
 					path: isDev ? '/css/index2.css' : '/demos/resumePrint/css/index2.css',
 					color: 'rgb(25,74,119)',
 				},
-				// {
-				//   img: '/images/template/2.png',
-				//   path: '/css/index2.css',
-				// },
+				{
+					img: '/images/template/3.png',
+					path: '/css/index3.css',
+				},
 				// {
 				//   img: '/images/template/3.png',
 				//   path: '/css/index.css',

@@ -10,6 +10,7 @@
   border-radius: 0;
   height: 45px;
   line-height: 45px;
+  letter-spacing: 2px;
 }
 .main-list .titleBox {
   background-color: rgb(230, 240, 250);
@@ -18,10 +19,20 @@
   font-size: 16px;
   height: 30px;
   line-height: 30px;
+  background-color: var(--temColor);
+  color: #fff;
+  text-align: center;
+}
+.main-list .title i{
+  border-radius: 0;
+  padding: 0;
 }
 .personal-info {
   align-items: center;
 }
 .personal-info .title {
   display: none;
+  background-color: var(--temColor);
+  color: #fff;
+  text-align: center;
 }
