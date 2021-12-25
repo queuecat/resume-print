@@ -436,22 +436,18 @@ const vm = new Vue({
 			CSSTemplate: [
 				{
 					color: '#2f5596',
-					img: isDev
-						? '/images/template/0.png'
-						: '/demos/resumePrint/images/template/0.png',
+					img: isDev ? '/images/template/0.png' : '/demos/resumePrint/images/template/0.png',
 					path: isDev ? '/css/index.css' : '/demos/resumePrint/css/index.css',
 				},
 				{
-					img: isDev
-						? '/images/template/1.png'
-						: '/demos/resumePrint/images/template/1.png',
+					img: isDev ? '/images/template/1.png' : '/demos/resumePrint/images/template/1.png',
 					path: isDev ? '/css/index2.css' : '/demos/resumePrint/css/index2.css',
 					color: 'rgb(25,74,119)',
 				},
-				// {
-				//   img: '/images/template/2.png',
-				//   path: '/css/index2.css',
-				// },
+				{
+					img: isDev ? '/images/template/3.png' : '/demos/resumePrint/images/template/3.png',
+					path: isDev ? '/css/index3.css' : '/demos/resumePrint/css/index3.css',
+				},
 				// {
 				//   img: '/images/template/3.png',
 				//   path: '/css/index.css',
@@ -470,6 +466,22 @@ const vm = new Vue({
 		};
 	},
 	methods: {
+		// 删除其他模块
+		deleteOtherModal(items, index) {
+			console.log(items, index);
+			this.$confirm('此操作将删除该字段, 是否继续?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'error',
+			})
+				.then(() => {
+					console.log(items.splice(index, 1));
+					console.log("奇了怪了", index);
+				})
+				.catch(() => {
+					console.log('删除取消');
+				});
+		},
 		// 替换全局css style方法
 		changeStyle() {
       if (this.CSSindex === 0 && this.style) {
@@ -637,7 +649,7 @@ const vm = new Vue({
 		},
 		// 新增模块内容
 		addOtherMudle(obj) {
-			obj.arr.push(obj.default);
+			obj.arr.push(JSON.parse(JSON.stringify(obj.default)));
 		},
 		// 动态改变长度
 		changeWidth(text, e) {

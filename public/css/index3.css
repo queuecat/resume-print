@@ -1,0 +1,55 @@
+.main::after {
+  top: 42px;
+  background-color: var(--temColor);
+  height: 10px;
+}
+.header {
+  z-index: 1;
+  position: relative;
+  width: 140px;
+  font-size: 19px;
+  border-radius: 0;
+  height: 45px;
+  line-height: 45px;
+  top: 25px;
+  letter-spacing: 8px;
+  color: var(--temColor);
+  background-color: #fff;
+}
+.personal-info .title {
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+  background-color:transparent;
+  color: var(--temColor);
+  border: none;
+  text-align: left;
+}
+.personal-info .title i{
+  background-color:var(--temColor);
+  border-radius: 50%;
+  padding: 5px;
+  color: #fff;
+}
+.main-list .title {
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+  background-color:transparent;
+  color: var(--temColor);
+  border: none;
+  text-align: left;
+  z-index: 1;
+  position: relative;
+}
+.main-list .titleBox{
+  position: relative;
+  background-color:transparent;
+}
+
+.main-list .title i{
+  background-color:var(--temColor);
+  border-radius: 50%;
+  padding: 5px;
+  color: #fff;
+}

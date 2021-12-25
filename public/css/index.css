@@ -67,6 +67,8 @@ li {
   font-size: 25px;
   font-weight: 900;
   color: #fff;
+  letter-spacing: inherit;
+  position: static;
 }
 
 /* 侧边工具栏 */
@@ -179,6 +181,10 @@ p {
   font-weight: 400;
   border: 1px var(--temColor) solid;
 }
+.main-list .title i{
+  border-radius: 0;
+  padding: 0;
+}
 .main-list .edit-btn {
   width: 25px;
   height: 25px;
@@ -258,6 +264,7 @@ p {
 }
 .items.textBox {
   margin-bottom: 5px;
+  position: relative;
 }
 .items.textBox:hover {
   background-color: rgb(216, 229, 251);
@@ -343,6 +350,17 @@ p {
 .items.textBox .textarea:hover {
   background-color: rgb(205, 212, 226);
 }
+/* 其他模块删除按钮 */
+.textBox .btn {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  color: rgb(255, 88, 88);
+}
+.textBox:hover .btn {
+  display: inline-block;
+}
 /* 个人信息 */
 .personal-info {
   margin: 40px 50px 30px 50px;
@@ -366,6 +384,10 @@ p {
   font-weight: 400;
   border: 1px var(--temColor) solid;
   display: block;
+}
+.personal-info  .title i{
+  border-radius: 0;
+  padding: 0;
 }
 .personal-info .items:hover {
   background-color: rgb(246, 250, 251);
