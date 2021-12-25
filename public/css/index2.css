@@ -11,6 +11,8 @@
   height: 45px;
   line-height: 45px;
   letter-spacing: 2px;
+  color:#fff;
+  background-color:  var(--temColor);
 }
 .main-list .titleBox {
   background-color: rgb(230, 240, 250);
